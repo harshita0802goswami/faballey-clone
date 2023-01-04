@@ -1,0 +1,37 @@
+.Banner-carousel{
+    position: relative;
+    overflow: hidden;
+}
+.carousel-images{
+    display: flex;
+    scroll-behavior:smooth;
+    /* height: 300px; */
+    
+    transition-duration: 200ms;
+    overflow-x: hidden;
+}
+.carousel-images img {
+    min-width: 100%;
+}
+.pre-btn,.next-btn{
+    height: 100%;
+    position: absolute;
+    color: #fc6486;
+    display: flex;
+    /* background-color: #fff; */
+    justify-content: center;
+    align-items: center;
+}
+.next-btn{
+    right: 0;
+}
+
+.pre-btn p,.next-btn p{
+    background-color: #fff;
+    padding: 4px 13px 6px;
+    margin: 0 20px;
+    font-weight: bolder;
+    border-radius: 10px;
+    font-size: 20px;
+    border: 2px solid skyblue;
+}
