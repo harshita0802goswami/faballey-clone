@@ -20,6 +20,7 @@ function Login() {
   const inputRef = useRef()
   const closeDiv = () => {
     divRef.current.style.display = divRef.current.style.display === 'none' ? 'block' : 'none';
+ // ADD NAVIGATE TO HOME PAGE HERE  
   }
 
   const handleInputClick = () => {
