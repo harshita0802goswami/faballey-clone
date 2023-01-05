@@ -1,0 +1,18 @@
+{
+  "user": [
+    {
+      "name": "Mohammed Sulthan",
+      "email": "sulthanmohammedaman1122@gmail.com",
+      "password": "eeeee",
+      "confirmPassword": "eeeeee",
+      "id": 1
+    },
+    {
+      "name": "Mohammed Sulthan",
+      "email": "sulthanmohammedaman1122@gmail.com",
+      "password": "eeeee",
+      "confirmPassword": "eeeeee",
+      "id": 2
+    }
+  ]
+}
