@@ -2,7 +2,7 @@
     display: flex;
     font-weight: 450;
     align-items: center;
-    margin-top: -10px;
+    margin-top: 4px;
 }
 .originalPrice{
     text-decoration: line-through;
@@ -11,8 +11,7 @@
 .deliveryInfo{
     display: flex;
     align-items: center;
-    /* border: 1px solid red; */
-    margin-top: -10px;
+    margin-top: 4px;
 }
 .deliveryInfo span{
     /* border: 1px solid green;  */

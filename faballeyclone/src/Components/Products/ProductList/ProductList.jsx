@@ -1,15 +1,32 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Filters } from '../Filters/Filters';
 import { ProductCard } from '../ProductCard/ProductCard'
 
-export const ProductList = ({data=[]}) => {
+export const ProductList = () => {
+  const [products,setProducts] = useState([]);
+
+  const fetchData = async ()=>{
+    let res = await fetch('https://sunrise-deeply-makemake.glitch.me/products');
+    let data = await res.json();
+    console.log(data);
+    setProducts(data);
+  }
+  
+  useEffect(()=>{
+    fetchData();
+  },[])
+
   return (
-    <Box width={"70%"}  display={"grid"} gridTemplateColumns={"repeat(3,1fr)"} gridRowGap={"20px"} gridColumnGap={"20px"}>
+    <Box>
+      <Filters/>
+    <Box display={"grid"} gridTemplateColumns={"repeat(4,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
       {
-        data.map((elem)=>{
+        products.map((elem)=>{
           return <ProductCard data={elem}/>
         })
       }
+    </Box>
     </Box>
   )
 }

@@ -7,12 +7,15 @@ import "./ProductCard.css";
 
 export const ProductCard = ({ data }) => {
   const [likeToggle, setLikeToggle] = useState(false);
+  const [image,changeImage] = useState(false);
   return (
     <Box border={"1px solid gray"}>
-      <img src={data.img1} alt="" width={"100%"} />
+      <div onMouseEnter={()=>changeImage(true)} onMouseLeave={()=>changeImage(false)}>
+      {image?<img src={data.img1} alt="" width={"100%"} />:<img src={data.img2} alt="" width={"100%"} />}
+      </div>
       <Box padding={"10px"}>
-        <Box h={"117px"}>
-          <Text fontSize="xs" mt={"-10px"}>
+        <Box h={"110px"}>
+          <Text fontSize="sm">
             {data.title}
           </Text>
           <h3 className="price">
@@ -51,7 +54,9 @@ export const ProductCard = ({ data }) => {
           <Button
             backgroundColor="rgb(252,100,134)"
             border={"none"}
+            borderRadius='4px'
             color={"white"}
+            colorScheme={'rgb(252,100,134)'}
             width={"60%"}
             height={"28px"}
           >
@@ -61,4 +66,4 @@ export const ProductCard = ({ data }) => {
       </Box>
     </Box>
   );
-};
+}

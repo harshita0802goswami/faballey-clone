@@ -4,21 +4,11 @@ import { CategoryList } from '../../Components/Products/CategoryList/CategoryLis
 import { ProductList } from '../../Components/Products/ProductList/ProductList'
 
 export const Products = () => {
-  const [prodData,setProdData] = React.useState();
-
-  const fetchData = async ()=>{
-    let res = await fetch('http://localhost:3002/products');
-    let data = await res.json();
-    console.log(data);
-    setProdData(data);
-  }
-  useEffect(()=>{
-    fetchData();
-  },[])
+  
   return (
-    <Box width={"90%"}  m={'auto '} display={'flex'} justifyContent={'space-around'} alignItems={"center"}>
+    <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-around'} >
         <CategoryList/>
-        <ProductList data = {prodData}/>
+        <ProductList/>
     </Box>
   )
 }
