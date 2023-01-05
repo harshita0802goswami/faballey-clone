@@ -12,11 +12,11 @@ import google from "./LoginImages/Login_Image1.png"
 import facebook from "./LoginImages/Login_Image2.png"
 import { useRef } from "react";
 import { useState } from "react";
-import {useNavigate} from "react"
+// import {useNavigate} from "react"
 function MySignUp() {
 
 
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
 
     //SignUp form handler state
     const [input, setInput] = useState({
@@ -27,7 +27,7 @@ function MySignUp() {
     })
 
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     //close mark div ref
     const divRef = useRef();
@@ -73,13 +73,7 @@ function MySignUp() {
     //handle submit 
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:3005/user`,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(input)
-            }
-            ).then((res)=>res.json()).then((data)=> navigate("./Login"))
+        console.log(input);
         }
     return (
             <Box>
