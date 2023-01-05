@@ -20,7 +20,7 @@ export const ProductList = () => {
   return (
     <Box>
       <Filters/>
-    <Box display={"grid"} gridTemplateColumns={"repeat(4,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
+    <Box display={"grid"} gridTemplateColumns={"repeat(3,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
       {
         products.map((elem)=>{
           return <ProductCard data={elem}/>
