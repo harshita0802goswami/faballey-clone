@@ -3,44 +3,177 @@ import styles from "./Cart.module.css";
 import CartNavbar from "../../Components/CartAndCheckout/CartNavbar";
 import CartItemsCard from "../../Components/CartAndCheckout/CartItemsCard";
 import Loading from "../../Components/CartAndCheckout/Loading";
+import CartFooter from "../../Components/CartAndCheckout/CartFooter";
 import { FaShoppingCart, FaCreditCard, FaUserAlt } from "react-icons/fa";
 import { MdLocalShipping, MdDelete } from "react-icons/md";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 
 import { RiAddCircleFill } from "react-icons/ri";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
-
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 function Cart() {
   let [CartItems, setCartItems] = useState([]);
-  let [isLoading, setIsLoading] = useState(true)
+  let [isLoading, setIsLoading] = useState(true);
+  let [CartSubTotal, setCartSubTotal] = useState(0);
+  let [Deleted, setIsDeleted] = useState(false);
+  let [isDonated, setIsDonated] = useState(0);
+  let [ProductQty, setProductQty] = useState(1);
+  let [deleteAlertTime, setDeleteAlerTime] = useState(true);
+  let [isApplyCoupon, setIsApplyCoupn] = useState(true);
+  let [CouponCode, setCouponCode] = useState("");
+  let [disableCouponbutton, setDisableCouponButton] = useState(false);
+  let [CouponSucces, setCouponSuccess] = useState(true);
+  let [CouponFailure, setCouponcodeFailure] = useState(true)
+  let RedirectToCheckout = useNavigate();
   useEffect(() => {
     getData();
-  }, []);
+  }, [Deleted]);
 
   function getData() {
     fetch(`http://localhost:3001/CartItems`)
       .then((res) => res.json())
       .then((val) => {
         setIsLoading(false);
-        setCartItems(val)
+        let subTotal = val.reduce((acc, ele) => {
+          return ele.MRP * ele.Qty + acc;
+        }, 0);
+        // console.log(subTotal);
+        setCartSubTotal(subTotal);
+        setCartItems(val);
       });
   }
-  if(isLoading){
-    return <Loading />
+  function DeleteCartItem(id) {
+    fetch(`http://localhost:3001/CartItems/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        setIsDeleted(true);
+        return res.json();
+      })
+      .then((val) => {
+        DeleteAlert();
+        setIsDeleted(false);
+      });
+  }
+
+  function DeleteAlert() {
+    setDeleteAlerTime(false);
+    setTimeout(() => {
+      setDeleteAlerTime(true);
+    }, 1500);
+  }
+
+  function donation(e) {
+    if (e.target.checked === true) {
+      setIsDonated(10);
+    } else {
+      setIsDonated(0);
+    }
+  }
+
+  function pageUpdated(val) {
+    // console.log(val);
+    setIsDeleted(val);
+  }
+
+  function CouponDiv() {
+    if (isApplyCoupon) {
+      setIsApplyCoupn(false);
+    } else {
+      setIsApplyCoupn(true);
+    }
+  }
+
+  function ApplyCouponCode() {
+    console.log(CouponCode);
+    if (CouponCode === "newuser25") {
+      setCartSubTotal((prev) => prev * 0.75);
+      setDisableCouponButton(true);
+      CouponSuccess();
+    } else {
+      setDisableCouponButton(false);
+      CouponFailureAlert();
+    }
+  }
+
+  function CouponSuccess() {
+    setCouponSuccess(false);
+    setTimeout(() => {
+      setCouponSuccess(true);
+    }, 1500);
+  }
+  function CouponFailureAlert() {
+    setCouponcodeFailure(false);
+    setTimeout(() => {
+      setCouponcodeFailure(true);
+    }, 1500);
+  }
+  function CouponInput(e) {
+    setCouponCode(e.target.value);
+  }
+
+  function NavigateToPage(){
+    RedirectToCheckout('/checkout')
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
   return (
     <div id={styles["cart-main-div"]}>
-      <CartNavbar />
+      <CartNavbar CartIconStyle={true} />
+
+      {/* Alert */}
+      <div
+        className={styles.DeleteAlert}
+        style={deleteAlertTime ? { opacity: 0 } : { opacity: 1 }}
+      >
+        <Alert status="warning">
+          <AlertIcon />1 item deleted from cart
+        </Alert>
+      </div>
+      <div
+        className={styles.DeleteAlert}
+        style={CouponSucces ? { opacity: 0 } : { opacity: 1 }}
+      >
+        <Alert status="success">
+          <AlertIcon />
+          Coupon applied successfully.
+        </Alert>
+      </div>
+      <div
+        className={styles.DeleteAlert}
+        style={CouponFailure ? { opacity: 0 } : { opacity: 1 }}
+      >
+        <Alert status="error">
+          <AlertIcon />
+          Wrong coupon code.
+        </Alert>
+      </div>
       {/* Cart Details */}
       <div className={styles.CartDescriptionAndPaymentDetails}>
         <div className={styles.CartItemDescription}>
           {/* Individual Card */}
           <p>My Shopping Bag</p>
-          {CartItems.map((ele)=>{
-            return <CartItemsCard key={ele.id} Cartdata={ele}/>
+          {CartItems.map((ele) => {
+            return (
+              <CartItemsCard
+                key={ele.id}
+                Cartdata={ele}
+                DeleteFunction={DeleteCartItem}
+                isUpdate={pageUpdated}
+              />
+            );
           })}
-          
+
           {/* Routing to other pages */}
           <div className={styles.RouteToProductAndWishListDiv}>
             <div>
@@ -53,7 +186,7 @@ function Cart() {
 
         {/* Payement Card */}
         <div className={styles.CartPaymentDescriptionDiv}>
-          <p>My Shopping Bag</p>
+          <p>Payment Details</p>
           <div className={styles.CartPaymentDescription}>
             <div className={styles.Donation}>
               <div className={styles.DonationLeft}>
@@ -65,12 +198,28 @@ function Cart() {
                 </p>
               </div>
               <div className={styles.DonationRight}>
-                <input type="checkbox" />
+                <input type="checkbox" onChange={donation} />
               </div>
             </div>
             <div className={styles.ApplyCoupon}>
-              <RiAddCircleFill />
-              <p>Apply Coupon</p>
+              <div onClick={CouponDiv}>
+                <RiAddCircleFill />
+                <p>Apply Coupon</p>
+              </div>
+              <div hidden={isApplyCoupon}>
+                <input
+                  type="text"
+                  placeholder="Coupon code"
+                  onChange={CouponInput}
+                />
+                <button
+                  onClick={ApplyCouponCode}
+                  disabled={disableCouponbutton}
+                  style={disableCouponbutton ? { background: "gray" } : {}}
+                >
+                  Apply
+                </button>
+              </div>
             </div>
             <div className={styles.RedeemGift}>
               <RiAddCircleFill />
@@ -79,23 +228,26 @@ function Cart() {
             <div className={styles.PriceDetailDiv}>
               <div className={styles.ProductMRP}>
                 <p>Sub Total</p>
-                <p>₹ 5248</p>
+                <p>₹ {CartSubTotal.toFixed(2)}</p>
               </div>
               <div>
                 <p className={styles.ProductDiscountAmount}>Discount</p>
-                <p>-₹ 233</p>
+                <p>-₹ {(CartSubTotal * 0.08).toFixed(2)}</p>
               </div>
               <div className={styles.DonationAmonut}>
                 <p>Donation</p>
-                <p>₹ 10</p>
+                <p>₹ {isDonated}</p>
               </div>
             </div>
             <div className={styles.TotalAmountDiv}>
               <p>Total</p>
-              <p>Rs. 5025</p>
+              <p>
+                Rs.{" "}
+                {(CartSubTotal - CartSubTotal * 0.08 + isDonated).toFixed(2)}
+              </p>
             </div>
             <div className={styles.PlaceOrderDiv}>
-              <button>Place Order</button>
+              <button onClick={NavigateToPage}>Place Order</button>
             </div>
           </div>
           <div className={styles.EstimatedDelivery}>
@@ -105,21 +257,11 @@ function Cart() {
           </div>
         </div>
       </div>
-      <div className={styles.CartFooter}>
-        <div className={styles.FooterLinks}>
-          <div>Home</div>
-          <div>Contact us</div>
-          <div>Privacy</div>
-          <div>Terms</div>
-        </div>
-        <div className={styles.FooterAllRightsReserved}>
-          <p>© 2023 Faballey.com. All Rights Reserved</p>
-        </div>
-      </div>
+
+      {/* Footer */}
+      <CartFooter />
     </div>
   );
 }
 
 export default Cart;
-
-//  />
