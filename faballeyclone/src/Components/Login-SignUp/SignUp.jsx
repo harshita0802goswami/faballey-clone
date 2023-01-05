@@ -11,7 +11,7 @@ import {
   import google from "./LoginImages/Login_Image1.png"
   import facebook from "./LoginImages/Login_Image2.png"
   import { useRef } from "react";
-  function MyLogin() {
+  function MySignUp() {
   
   
     const divRef = useRef();
@@ -19,6 +19,8 @@ import {
   
     const inputRef = useRef()
     const inputRef1 = useRef()
+    const inputRef2 = useRef()
+
 
     const closeDiv = () => {
       divRef.current.style.display = divRef.current.style.display === 'none' ? 'block' : 'none';
@@ -31,19 +33,25 @@ import {
     const handleInputClick1 = () => {
         inputRef1.current.style.borderBottom = '2px solid black';
       };
+      const handleInputClick2 = () => {
+        inputRef2.current.style.borderBottom = '2px solid black';
+      };
     return (
   
       <Box mt={'6%'} >
           <Box  ref={divRef} bg={"white"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
             <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
-            <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
+            <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> REGISTER HERE </Text>
             <Text ml={"5%"} paddingBottom={"19px"} textAlign={"left"} fontFamily={"Lato"} fontSize={"14px"} fontWeight={"bold"}> for a quicker checkout</Text>
   
             <FormControl isRequired >
                <FormLabel ml={"5%"}>Email</FormLabel>
-              <Input borderRadius={"none"} ref={inputRef1}  onClick={handleInputClick1} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER MOBILE/EMAIL" mb={"24px"}/>
-              <FormLabel ml={"5%"}>Password</FormLabel>
-              <Input borderRadius={"none"} ref={inputRef}  onClick={handleInputClick} w={"90%"} padding={"27px"} type="password" id="password" placeholder="ENTER PASSWORD" />
+              <Input borderRadius={"none"} ref={inputRef1}  onClick={handleInputClick1} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"}/>
+              <FormLabel ml={"5%"}>Enter Password</FormLabel>
+
+              <Input borderRadius={"none"} ref={inputRef2}  onClick={handleInputClick2} w={"90%"} padding={"27px"} type="password" id="password" placeholder="ENTER PASSWORD" />
+             <FormLabel ml={"5%"} mt={"24px"} > Confirm Password</FormLabel>
+              <Input borderRadius={"none"} ref={inputRef}  onClick={handleInputClick} w={"90%"} padding={"27px"} type="password" id="password" placeholder="CONFIRM PASSWORD" />
             </FormControl>
             <Button borderRadius={"0px"} w={"90%"} color={"white"} padding={"27px"} marginTop={"35px"} marginBottom={"30px"} type="submit" colorScheme='red' bg={"#fc6486"}>
               CONTINUE
@@ -64,7 +72,7 @@ import {
             </Box>
 
             <Box>
-              <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} >New here?   SignUp</Text>
+              <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} >Already Registered? Login</Text>
             </Box>
   
   
@@ -79,4 +87,4 @@ import {
   
     );
   }
-  export default MyLogin
+  export default MySignUp
