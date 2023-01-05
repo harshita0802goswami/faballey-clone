@@ -38,8 +38,8 @@ export const Filters = () => {
   <option value=''>Full</option>
 </Select>
   </HStack>
-  <Box className='productListTitle' h={'30px'} border='2px solid red' paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'}>
-    <Box display="flex" alignItems={'center'} border={'2px solid gray'} height={'20px'}>
+  <Box className='productListTitle' h={'30px'}  paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'} borderTop='1px solid gray' borderBottom={'1px solid gray'} mb='20px'>
+    <Box display="flex" alignItems={'center'}  height={'20px'}>
       <Box paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>TOPS</h6></Box>
       <Box paddingLeft={'10px'} paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>234 STYLES FOUND</h6></Box>
       <Box paddingLeft={'10px'}><h6>view 201</h6></Box>

@@ -5,7 +5,7 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { useState } from "react";
 import "./ProductCard.css";
 
-export const ProductCard = ({ data }) => {
+export const ProductCard = ({ data,addToCart}) => {
   const [likeToggle, setLikeToggle] = useState(false);
   const [image,changeImage] = useState(false);
   return (
@@ -52,6 +52,7 @@ export const ProductCard = ({ data }) => {
             />
           )}
           <Button
+          onClick={(e)=>addToCart(e,data)}
             backgroundColor="rgb(252,100,134)"
             border={"none"}
             borderRadius='4px'
