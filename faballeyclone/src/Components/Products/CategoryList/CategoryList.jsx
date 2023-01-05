@@ -31,7 +31,7 @@ export const CategoryList = ({changeFilter}) => {
     
   ]
   return (
-    <Box w={"20%"} border={''}>
+    <div style={{width:'21%'}}>
       <Accordion defaultIndex={[0]} allowMultiple>
       <AccordionItem>
       <h2>
@@ -60,7 +60,7 @@ export const CategoryList = ({changeFilter}) => {
       <AccordionPanel pb={4} >
       {element.data.map((elem,i)=>{
           return <Box h={'25px'}  display="flex" alignItems={'center'}>
-            <Text onClick={(e)=>changeFilter(element.key,elem)} fontSize={'sm'} >{element.title=='Discount'?elem+"% 0FF":elem}</Text>
+            <Text cursor={'pointer'} onClick={(e)=>changeFilter(element.key,elem)} fontSize={'sm'} >{element.title=='Discount'?elem+"% 0FF":elem}</Text>
           </Box>
         })}
       </AccordionPanel>
@@ -69,6 +69,6 @@ export const CategoryList = ({changeFilter}) => {
     })
   }
 </Accordion>
-    </Box>
+    </div>
   )
 }

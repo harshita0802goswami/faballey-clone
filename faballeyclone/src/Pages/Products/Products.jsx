@@ -7,7 +7,7 @@ import {MdError} from 'react-icons/md'
 
 export const Products = () => {
   const [products,setProducts] = useState([]);
-  const [isLoading, setLoading]=useState(false);
+  const [isLoading, setLoading]=useState(true);
   const [currentPage,setCurrentPage] = useState(1);
   const [totalProducts,setTotalProducts] =useState(0);
   const [showAlert,setAlert] = useState(false);
@@ -38,7 +38,9 @@ console.log(filters);
     let data = await res.json();
     console.log(data);
     setProducts(data);
-      setLoading(false);
+      setInterval(()=>{
+        setLoading(false);
+      },4000)
   }
 
 
@@ -93,7 +95,7 @@ console.log(filters);
   return (
     <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-between'} gap={'15px'} >
         <CategoryList changeFilter={changeFilter}/>
-        {isLoading?<h2>loading</h2>:<ProductList products={products} addToCart = {addToCart}/>}
+        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading}/>
 
         {showSuccess?
             <Container  fontSize="1rem" gap="3px" h={'40px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="10%" left="45%"  borderRadius="8px">

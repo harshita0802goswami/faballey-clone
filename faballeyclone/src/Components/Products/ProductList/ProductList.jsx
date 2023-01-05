@@ -2,12 +2,12 @@ import { Box } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { Filters } from '../Filters/Filters';
 import { ProductCard } from '../ProductCard/ProductCard'
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
-export const ProductList = ({products,addToCart}) => {
-  
-
-  return (<div>
-  <Box className='productListTitle' h={'30px'}  paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'} borderTop='1px solid gray' borderBottom={'1px solid gray'} mb='20px'>
+export const ProductList = ({products,addToCart,isLoading}) => {
+  let renderingData =[0,0,0,0,0,0,0,0,0,0,0,0];
+  return (<div style={{width:"79%" ,padding:"4px 20px",border:'2px solid red'}}>
+    <Box  className='productListTitle' h={'30px'}  paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'} borderTop='1px solid gray' borderBottom={'1px solid gray'} mb='20px'>
     <Box display="flex" alignItems={'center'}  height={'20px'}>
       <Box paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>TOPS</h6></Box>
       <Box paddingLeft={'10px'} paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>234 STYLES FOUND</h6></Box>
@@ -19,13 +19,21 @@ export const ProductList = ({products,addToCart}) => {
       </Box>
     </Box>
   </Box>
+  {isLoading?
+    <Box display={"grid"} gridTemplateColumns={"repeat(4,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
+      {
+        renderingData.map((elem)=>{
+          return <ProductCard data={elem} addToCart={addToCart} isLoading={isLoading}/>
+        })
+      }
+    </Box>:
     <Box display={"grid"} gridTemplateColumns={"repeat(4,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
       {
         products.map((elem)=>{
-          return <ProductCard data={elem} addToCart={addToCart}/>
+          return <ProductCard data={elem} addToCart={addToCart} isLoading={isLoading}/>
         })
       }
-    </Box>
+    </Box>}
     </div>
   )
 }

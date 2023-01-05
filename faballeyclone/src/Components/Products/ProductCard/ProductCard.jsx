@@ -1,14 +1,46 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Skeleton, SkeletonCircle, SkeletonText, Text } from "@chakra-ui/react";
 import React from "react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { useState } from "react";
 import "./ProductCard.css";
 
-export const ProductCard = ({ data,addToCart}) => {
+export const ProductCard = ({ data,addToCart,isLoading}) => {
   const [likeToggle, setLikeToggle] = useState(false);
   const [image,changeImage] = useState(false);
+  
   return (
+    <div>
+      {isLoading?<Box>
+      <Skeleton  width={"100%"} h='300px' />
+      <Box padding={"10px"}>
+        <Box h={"110px"}>
+        <SkeletonText mt='3' noOfLines={3} spacing='4' skeletonHeight='4' />
+        </Box>
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          
+          <SkeletonCircle size='8' />
+          <Skeleton>
+          <Button
+          onClick={(e)=>addToCart(e,data)}
+            border={"none"}
+            borderRadius='1px'
+            color={"white"}
+            width={"60%"}
+            height={"28px"}
+            fontSize={'0.8rem'}
+            fontWeight={'500'}
+          >
+            ADD TO BAG
+          </Button>
+          </Skeleton>
+        </Box>
+      </Box>
+    </Box>:
     <Box border={"1px solid gray"}>
       <div onMouseEnter={()=>changeImage(true)} onMouseLeave={()=>changeImage(false)}>
       {image?<img src={data.img1} alt="" width={"100%"} />:<img src={data.img2} alt="" width={"100%"} />}
@@ -24,7 +56,7 @@ export const ProductCard = ({ data,addToCart}) => {
           </h3>
           <Box>
             <h6 className="deliveryInfo">
-              <TbTruckDelivery size={"1.5rem"} color={"black"} /> &nbsp;
+              <TbTruckDelivery size={"1.4rem"} color={"black"} /> &nbsp;
               <span>EXPRESS </span>&nbsp;<span>3 Day Delivery</span>
             </h6>
           </Box>
@@ -44,7 +76,7 @@ export const ProductCard = ({ data,addToCart}) => {
             />
           ) : (
             <FcLikePlaceholder
-              size={"1.9rem"}
+              size={"1.7rem"}
               cursor={"pointer"}
               onClick={() => {
                 setLikeToggle(true);
@@ -55,16 +87,19 @@ export const ProductCard = ({ data,addToCart}) => {
           onClick={(e)=>addToCart(e,data)}
             backgroundColor="rgb(252,100,134)"
             border={"none"}
-            borderRadius='4px'
+            borderRadius='1px'
             color={"white"}
             colorScheme={'rgb(252,100,134)'}
             width={"60%"}
             height={"28px"}
+            fontSize={'0.8rem'}
+            fontWeight={'500'}
           >
             ADD TO BAG
           </Button>
         </Box>
       </Box>
-    </Box>
+    </Box>}
+    </div>
   );
 }
