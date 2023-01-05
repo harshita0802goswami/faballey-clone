@@ -7,21 +7,38 @@ import {MdError} from 'react-icons/md'
 
 export const Products = () => {
   const [products,setProducts] = useState([]);
-  const [isLoading, setLoading]=useState(true);
+  const [isLoading, setLoading]=useState(false);
   const [currentPage,setCurrentPage] = useState(1);
   const [totalProducts,setTotalProducts] =useState(0);
   const [showAlert,setAlert] = useState(false);
   const [showSuccess,setSuccess] = useState(false);
+  const [filters,setFilters] = useState({
+    category:'',
+    color:'',
+    sleeves:'',
+    length:'',
+    discount:''
+  })
+
+  const changeFilter = (key,value)=>{
+    let newValue = value;
+    if(key!="discount"){
+      newValue = value.toLowerCase();;
+    }
+    console.log(key+'clicked'+ newValue)
+    setFilters({
+      ...filters,[key]:newValue
+    })
+  }
+console.log(filters);
 
   const fetchData = async ()=>{
     setLoading(true)
-    let res = await fetch('https://enormous-childlike-gorgonzola.glitch.me/products');
+    let res = await fetch(`https://enormous-childlike-gorgonzola.glitch.me/products?${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
     let data = await res.json();
     console.log(data);
     setProducts(data);
-    setTimeout(()=>{
       setLoading(false);
-  },1000)
   }
 
 
@@ -69,17 +86,17 @@ export const Products = () => {
 
     }
   }
-  
+  console.log(showAlert);
   useEffect(()=>{
     fetchData();
-  },[])
+  },[filters])
   return (
-    <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-around'} gap={'15px'} >
-        <CategoryList/>
-        <ProductList products={products} addToCart = {addToCart}/>
+    <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-between'} gap={'15px'} >
+        <CategoryList changeFilter={changeFilter}/>
+        {isLoading?<h2>loading</h2>:<ProductList products={products} addToCart = {addToCart}/>}
 
         {showSuccess?
-            <Container  sx={{fontSize:"1rem",gap:"3px", width:"fit-content",bgcolor:"green",color:"white",display:"flex",justifyContent:"center",alignItems:"center",position:"fixed",top:"10%",left:"45%" ,borderRadius:"8px" }}>
+            <Container  fontSize="1rem" gap="3px" h={'40px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="10%" left="45%"  borderRadius="8px">
             <AiFillCheckCircle fontSize={"1.2rem"}/> <Text>
                 
                 Added To Cart
@@ -87,7 +104,7 @@ export const Products = () => {
         </Container>:""}
 
         {showAlert?
-            <Container  sx={{fontSize:"1rem",gap:"3px", width:"fit-content",bgcolor:"red",color:"white",display:"flex",justifyContent:"center",alignItems:"center",position:"fixed",top:"10%",left:"45%" ,borderRadius:"8px" }}>
+            <Container  fontSize="1rem" gap="3px" h={'40px'} width="fit-content" backgroundColor="red" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="10%" left="45%"  borderRadius="8px">
             <MdError fontSize={"1.2rem"}/> <Text>
                 
                 Already in Cart!
