@@ -13,8 +13,21 @@ import facebook from "./LoginImages/Login_Image2.png"
 import { useRef } from "react";
 import { useState } from "react";
 // import {useNavigate} from "react"
+
+import { useDispatch } from "react-redux";
+
+import Action from "../../Redux/Action";
+import { useSelector } from "react-redux";
+
 function MySignUp() {
 
+
+ let storeData= useSelector((storeData)=>{
+
+    return storeData.signUpDetails
+    })
+
+    console.log(storeData)
 
     // let navigate = useNavigate()
 
@@ -26,8 +39,8 @@ function MySignUp() {
         confirmPassword: "",
     })
 
+    const dispatch = useDispatch();
 
-    // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     //close mark div ref
     const divRef = useRef();
@@ -73,7 +86,10 @@ function MySignUp() {
     //handle submit 
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        console.log(input);
+
+        Action(input,dispatch)
+
+
         }
     return (
             <Box>
