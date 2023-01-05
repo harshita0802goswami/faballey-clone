@@ -21,7 +21,6 @@ function MySignUp() {
         email: "",
         password: "",
         confirmPassword: "",
-        
     })
 
 
