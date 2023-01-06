@@ -1911,5 +1911,22 @@
         "img3": "https://img.faballey.com/images/Product/CTP00546D/d5.jpg",
         "img4": "https://img.faballey.com/images/Product/CTP00546D/d8.jpg"
       }
+    ],
+    "cart":[
+      {
+        "id": "147",
+        "category": "curve",
+        "title": "CURVE Green Floral Bell Sleeve Blouse",
+        "discount": "50",
+        "price2": "1500",
+        "price1": "750",
+        "site": "https://www.faballey.com/curve-green-floral-bell-sleeve-blouse-130/prdt",
+        "img1": "https://img.faballey.com/images/Product/CTP00546D/1.jpg",
+        "img2": "https://img.faballey.com/images/Product/CTP00546D/d4.jpg",
+        "img3": "https://img.faballey.com/images/Product/CTP00546D/d5.jpg",
+        "img4": "https://img.faballey.com/images/Product/CTP00546D/d8.jpg",
+        "qty":"1"
+      }
     ]
+    
   }

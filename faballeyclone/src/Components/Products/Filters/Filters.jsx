@@ -1,17 +1,18 @@
 import React from 'react'
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Text } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, HStack, Select, Text } from '@chakra-ui/react'
+import './Filters.css'
 
-export const CategoryList = ({changeFilter}) => {
+export const Filters = () => {
   let arr = [
     {
       title:"Category",
       key:'category',
-      data:['Tops','Dress','Bottoms','Loungewear','Co-ords','Skirts','Classics','Workwear','Autumn-wear','Curve']
+      data:['Tops','Dress','Bottom','Loungewear','Co-ords','Skirts','Classics','Workwear','Autumn-wear','Curve']
     },
     {
       title:'Color',
       key:'color',
-      data:['blue','black','yellow','green','pink','purple','navy']
+      data:['blue','black','yellow','red','pink','purple','navy']
     },
     {
       title:'Sleeves',
@@ -25,13 +26,13 @@ export const CategoryList = ({changeFilter}) => {
     },
     {
       title:'Length',
-      key:'length',
+      key:'lenght',
       data:['crop','regular','mini','short','long']
     }
     
   ]
   return (
-    <div style={{width:'21%'}}>
+    <div>
       <Accordion defaultIndex={[0]} allowMultiple>
       <AccordionItem>
       <h2>
@@ -60,7 +61,7 @@ export const CategoryList = ({changeFilter}) => {
       <AccordionPanel pb={4} >
       {element.data.map((elem,i)=>{
           return <Box h={'25px'}  display="flex" alignItems={'center'}>
-            <Text cursor={'pointer'} onClick={(e)=>changeFilter(element.key,elem)} fontSize={'sm'} >{element.title=='Discount'?elem+"% 0FF":elem}</Text>
+            <Text fontSize={'sm'} name={element.key} value = {elem}>{element.title=='Discount'?elem+"% 0FF":elem}</Text>
           </Box>
         })}
       </AccordionPanel>

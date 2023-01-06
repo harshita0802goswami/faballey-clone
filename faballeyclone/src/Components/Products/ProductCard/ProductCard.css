@@ -1,0 +1,21 @@
+.price{
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    margin-top: 4px;
+}
+.originalPrice{
+    text-decoration: line-through;
+    color: grey;
+}
+.deliveryInfo{
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+.deliveryInfo span{
+    font-size: 0.8rem;
+}
+.deliveryInfo span{
+    /* border: 1px solid green;  */
+}
