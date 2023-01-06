@@ -9,28 +9,72 @@ import {
 } from "@chakra-ui/react";
 import { Input, InputGroup, Button, InputRightElement } from "@chakra-ui/react";
 import "./SingleProduct.css";
-
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 var productSizes = {
   activeClass: "",
   sizeArray: ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL"],
 };
-const SingleProduct = () => {
-  const [product, setproduct] = useState([]);
+
+const SingleProduct = ({ id }) => {
+  // delivery date
+  const min = 10;
+  const max = 20;
+  let date1 = Math.floor(Math.random() * 10) + 1;
+  let date2 = Math.floor(Math.random() * (max - min)) + min;
+  console.log(date1, date2);
+
+  const [product, setproduct] = useState({});
+  console.log("product: ", product);
+
   const [prodSize, setProdSize] = useState([]);
   const [checkActiveState, setCheckActiveState] = useState(productSizes);
 
   const [showMessage, setMessage] = useState(false);
   const [show, setShow] = useState(false);
+
   const handleClick = () => {
     setShow(!show);
     setMessage(!showMessage);
   };
 
+  const getProduct = async () => {
+    const res = await fetch(
+      `https://enormous-childlike-gorgonzola.glitch.me/products/4`
+    );
+    let data = await res.json();
+    setproduct(data);
+  };
+  useEffect(() => {
+    getProduct();
+  }, []);
+
   const setProductSizeHandleClick = (e, id) => {
     setProdSize(e);
     setCheckActiveState({ ...productSizes, activeClass: id });
+  };
+
+  const addToCart = (product) => {
+    if (!prodSize) {
+      alert("Select size first");
+    }
+    try {
+      fetch(`https://enormous-childlike-gorgonzola.glitch.me/products/4}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          alert("Product added to Cart");
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div style={{ width: "90%", margin: "20px auto" }}>
@@ -43,18 +87,24 @@ const SingleProduct = () => {
             width: "60%",
           }}
         >
-          <div>
-            <img src="https://img.faballey.com/images/Product/TOP05210Z/d4.jpg" />
-            <img src="https://img.faballey.com/images/Product/TOP05210Z/d5.jpg" />
-            <img src="https://img.faballey.com/images/Product/TOP05210Z/d4.jpg" />
-            <img src="https://img.faballey.com/images/Product/TOP05210Z/d5.jpg" />
-          </div>
+          {Object.keys(product).length > 0 ? (
+            <div>
+              <img src={product.img1} alt="This is a product" />
+              <img src={product.img2} alt="This is a product" />
+              <img src={product.img3} alt="This is a product" />
+              <img src={product.img4} alt="This is a product" />
+            </div>
+          ) : (
+            <h2>No Dataa</h2>
+          )}
         </div>
         <div style={{ width: "36%" }}>
           <h3 style={{ fontSize: "1.6rem", fontWeight: "600" }}>
-            Pink White Floral Ruffle Sleeve Peplum Top
+            {product.title}
           </h3>
-          <h3 style={{ fontSize: "1.6rem", fontWeight: "bold" }}>₹ 1450</h3>
+          <h3 style={{ fontSize: "1.6rem", fontWeight: "bold" }}>
+            ₹ {product.price2}
+          </h3>
           <p style={{ color: "green", fontSize: "1.1rem" }}>
             Inclusive of all taxes
           </p>
@@ -108,7 +158,9 @@ const SingleProduct = () => {
 
           {/* add to cart & wishlist */}
           <div className="cartBtns">
-            <p className="addToCart">ADD TO BAG</p>
+            <p className="addToCart" onClick={() => addToCart()}>
+              ADD TO BAG
+            </p>
             <p className="addToWishlist">
               <span>
                 <i class="fa-regular fa-heart"></i>ADD TO WISHLIST
@@ -130,7 +182,9 @@ const SingleProduct = () => {
             </InputRightElement>
           </InputGroup>
           <h3 style={{ color: "green", padding: "10px" }}>
-            {show ? "Express Delivery between 09 Jan 2023 - 11 Jan 2023" : null}
+            {show
+              ? `Express Delivery between ${date1} Jan 2023 - ${date2} Jan 2023`
+              : null}
           </h3>
 
           {/* accordian */}
@@ -169,10 +223,12 @@ const SingleProduct = () => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                <h1
+                  style={{
+                    fontSize: "1.1rem",
+                    padding: "10px",
+                  }}
+                >{`${product.title} with ${product.sleeves} sleeves`}</h1>
               </AccordionPanel>
             </AccordionItem>
 
@@ -195,10 +251,38 @@ const SingleProduct = () => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                <h1
+                  style={{
+                    fontSize: "1.1rem",
+                    paddingLeft: "10px"
+                  }}
+                >
+                  {`Color : ${product.color}`}
+                  <h1
+                    style={{
+                      fontSize: "1.1rem",
+                    
+                    }}
+                  >
+                    {" "}
+                    {`Sleeves : ${product.sleeves}`}
+                  </h1>
+                  <h1
+                    style={{
+                      fontSize: "1.1rem",
+                     
+                    }}
+                  >{`Length : ${product.length}`}</h1>
+                  {/* Manufactured and Packed by High Street Essentials Private
+                  Limited C-11, Sector 7, District Gautam Budh Nagar, Noida
+                  201301, Uttar Pradesh, India For Customer Queries Grievance
+                  Redressal Officer C-11, Sector 7, District Gautam Budh Nagar,
+                  Noida 201 301, Uttar Pradesh, India Phone : +91-8929987349 /
+                  0120-6850262 Email : customercare@faballey.com NOTE: There
+                  might be a slight variation in the shade of the actual product
+                  and the image shown on the screen, due to the screen
+                  resolution and photography effects. */}
+                </h1>
               </AccordionPanel>
             </AccordionItem>
 
@@ -221,10 +305,19 @@ const SingleProduct = () => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                <h1
+                  style={{
+                    fontSize: "1.1rem",
+                    padding: "10px",
+                  }}
+                >
+                  Dispatch: Within 24 Hours Delivery time within India - 1-3*
+                  business days International delivery time - 7-10* business
+                  days Return/Exchange: If you are not completely satisfied with
+                  your purchase, simply select the option of return/exchange
+                  within 10 days of receiving your order from your order details
+                  page and we will process your return, no questions asked.
+                </h1>
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
