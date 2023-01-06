@@ -41,16 +41,19 @@ const changeSort = (value)=>{
 console.log(sort);
   const fetchData = async ()=>{
     setLoading(true)
-    let res = await fetch(`https://enormous-childlike-gorgonzola.glitch.me/products?${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
+    let res = await fetch(`https://cheddar-pentagonal-torta.glitch.me/products?${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
+    
+    
     let data = await res.json();
     console.log(data);
+    setTotalProducts(data.length);
     setProducts(data);
       setInterval(()=>{
         setLoading(false);
       },4000)
   }
 
-
+  console.log(totalProducts+"total poducts");
   const postData =async(propdata)=>{
     let newData={...propdata};
     delete newData.id;
@@ -102,10 +105,10 @@ console.log(sort);
   return (
     <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-between'} gap={'15px'} >
         <CategoryList changeFilter={changeFilter}/>
-        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort}/>
+        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort} totalProducts={totalProducts} filters={filters}/>
 
         {showSuccess?
-            <Container  fontSize="1rem" gap="3px" h={'40px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="10%" left="45%"  borderRadius="8px">
+            <Container  fontSize="1rem" gap="3px" h={'45px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="5%" left="45%"  borderRadius="8px">
             <AiFillCheckCircle fontSize={"1.2rem"}/> <Text>
                 
                 Added To Cart
@@ -113,7 +116,7 @@ console.log(sort);
         </Container>:""}
 
         {showAlert?
-            <Container  fontSize="1rem" gap="3px" h={'40px'} width="fit-content" backgroundColor="red" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="10%" left="45%"  borderRadius="8px">
+            <Container  fontSize="1rem" gap="3px" h={'45px'} width="fit-content" backgroundColor="red" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="5%" left="45%"  borderRadius="8px">
             <MdError fontSize={"1.2rem"}/> <Text>
                 
                 Already in Cart!
