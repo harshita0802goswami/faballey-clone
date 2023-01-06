@@ -401,6 +401,7 @@
     padding-bottom: 10px;
 }
 
+
 .PriceDetailDiv>div,
 .TotalAmountDiv{
     /* border: 1px solid red; */
@@ -418,6 +419,7 @@
 
 .TotalAmountDiv{
     border-bottom: 1px solid gray;
+    color: rgb(252, 100, 134);
 }
 
 .TotalAmountDiv>p{

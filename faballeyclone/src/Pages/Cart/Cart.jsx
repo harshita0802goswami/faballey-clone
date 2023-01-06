@@ -7,7 +7,7 @@ import CartFooter from "../../Components/CartAndCheckout/CartFooter";
 import { FaShoppingCart, FaCreditCard, FaUserAlt } from "react-icons/fa";
 import { MdLocalShipping, MdDelete } from "react-icons/md";
 import { BsFillCaretLeftFill } from "react-icons/bs";
-
+import EmptyCart from "../../Components/CartAndCheckout/EmptyCart";
 import { RiAddCircleFill } from "react-icons/ri";
 import {
   Alert,
@@ -18,7 +18,7 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 function Cart() {
   let [CartItems, setCartItems] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
@@ -31,7 +31,7 @@ function Cart() {
   let [CouponCode, setCouponCode] = useState("");
   let [disableCouponbutton, setDisableCouponButton] = useState(false);
   let [CouponSucces, setCouponSuccess] = useState(true);
-  let [CouponFailure, setCouponcodeFailure] = useState(true)
+  let [CouponFailure, setCouponcodeFailure] = useState(true);
   let RedirectToCheckout = useNavigate();
   useEffect(() => {
     getData();
@@ -120,12 +120,27 @@ function Cart() {
     setCouponCode(e.target.value);
   }
 
-  function NavigateToPage(){
-    RedirectToCheckout('/checkout')
+  function NavigateToPage() {
+    RedirectToCheckout("/checkout");
+    let PaymentDetails = {
+      SubTotal: CartSubTotal,
+      Discount: CartSubTotal * 0.08,
+      Donated: isDonated,
+      Total: CartSubTotal - CartSubTotal * 0.08 + isDonated,
+    };
+    localStorage.setItem("PaymentDetails", JSON.stringify(PaymentDetails));
   }
 
   if (isLoading) {
     return <Loading />;
+  }
+  if (CartItems.length == 0) {
+    return (
+      <>
+        <CartNavbar CartIconStyle={true} />
+        <EmptyCart />
+      </>
+    );
   }
   return (
     <div id={styles["cart-main-div"]}>
@@ -230,8 +245,8 @@ function Cart() {
                 <p>Sub Total</p>
                 <p>₹ {CartSubTotal.toFixed(2)}</p>
               </div>
-              <div>
-                <p className={styles.ProductDiscountAmount}>Discount</p>
+              <div className={styles.ProductDiscountAmount}>
+                <p>Discount</p>
                 <p>-₹ {(CartSubTotal * 0.08).toFixed(2)}</p>
               </div>
               <div className={styles.DonationAmonut}>
