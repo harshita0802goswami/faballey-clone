@@ -22,9 +22,9 @@ import { useSelector } from "react-redux";
 function MySignUp() {
 
 
- let storeData= useSelector((storeData)=>{
+    let storeData = useSelector((storeData) => {
 
-    return storeData.signUpDetails
+        return storeData.signUpDetails
     })
 
     console.log(storeData)
@@ -87,60 +87,60 @@ function MySignUp() {
     const formSubmitHandler = (e) => {
         e.preventDefault();
 
-        Action(input,dispatch)
+        Action(input, dispatch)
 
 
-        }
+    }
     return (
-            <Box>
-                <Box ref={divRef} bg={"white"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
-                    <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
-                    <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> REGISTER HERE </Text>
-                    <FormControl isRequired >
+        <Box>
+            <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
+                <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
+                <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> REGISTER HERE </Text>
+                <FormControl isRequired >
 
-                        <FormLabel ml={"5%"}>Name</FormLabel>
-                        <Input name={"name"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef3} onClick={handleInputClick3} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"} />
-
-
-                        <FormLabel ml={"5%"}>Email</FormLabel>
-                        <Input name={"email"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef1} onClick={handleInputClick1} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"} />
-                        <FormLabel ml={"5%"}>Enter Password</FormLabel>
-                        <Input name={"password"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef2} onClick={handleInputClick2} w={"90%"} padding={"27px"} type="password" id="password" placeholder="ENTER PASSWORD" />
-                        <FormLabel ml={"5%"} mt={"24px"} > Confirm Password</FormLabel>
-                        <Input name={"confirmPassword"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef} onClick={handleInputClick} w={"90%"} padding={"27px"} type="password" id="password" placeholder="CONFIRM PASSWORD" />
-                    </FormControl>
-                    <Button onClick={formSubmitHandler} borderRadius={"0px"} w={"90%"} color={"white"} padding={"27px"} marginTop={"35px"} marginBottom={"30px"} type="submit" colorScheme='red' bg={"#fc6486"}>
-                        CONTINUE
-                    </Button>
-
-                    <Flex align="center" mb={"30px"} fontWeight={"thin"}>
-                        <Divider />
-                        <Text opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} >Or_continue_with</Text>
-                        <Divider />
-                    </Flex >
+                    <FormLabel ml={"5%"}>Name</FormLabel>
+                    <Input name={"name"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef3} onClick={handleInputClick3} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"} />
 
 
-                    <Box margin={"auto"} justifyContent={"center"} gap={"8px"} w="80%" display={"flex"}>
-                        <Image cursor={"pointer"} w={"42%"} src={google} alt={"google"} />
-                        <Image cursor={"pointer"} w={"42%"} src={facebook} alt={"facebook"} />
+                    <FormLabel ml={"5%"}>Email</FormLabel>
+                    <Input name={"email"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef1} onClick={handleInputClick1} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"} />
+                    <FormLabel ml={"5%"}>Enter Password</FormLabel>
+                    <Input name={"password"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef2} onClick={handleInputClick2} w={"90%"} padding={"27px"} type="password" id="password" placeholder="ENTER PASSWORD" />
+                    <FormLabel ml={"5%"} mt={"24px"} > Confirm Password</FormLabel>
+                    <Input name={"confirmPassword"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef} onClick={handleInputClick} w={"90%"} padding={"27px"} type="password" id="password" placeholder="CONFIRM PASSWORD" />
+                </FormControl>
+                <Button onClick={formSubmitHandler} borderRadius={"0px"} w={"90%"} color={"white"} padding={"27px"} marginTop={"35px"} marginBottom={"30px"} type="submit" colorScheme='red' bg={"#fc6486"}>
+                    CONTINUE
+                </Button>
+
+                <Flex align="center" mb={"30px"} fontWeight={"thin"}>
+                    <Divider />
+                    <Text opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} >Or_continue_with</Text>
+                    <Divider />
+                </Flex >
 
 
-                    </Box>
-
-                    <Box>
-                        <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} >Already Registered? Login</Text>
-                    </Box>
-
-
-
-                    <Text opacity={"0.6"}
-                        cursor={"pointer"} fontWeight={"semibold"} mt={"30px"} fontSize={"13px"} onClick={closeDiv} ref={divRef} >Skip</Text>
+                <Box margin={"auto"} justifyContent={"center"} gap={"8px"} w="80%" display={"flex"}>
+                    <Image cursor={"pointer"} w={"42%"} src={google} alt={"google"} />
+                    <Image cursor={"pointer"} w={"42%"} src={facebook} alt={"facebook"} />
 
 
                 </Box>
 
+                <Box>
+                    <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} >Already Registered? Login</Text>
+                </Box>
+
+
+
+                <Text opacity={"0.6"}
+                    cursor={"pointer"} fontWeight={"semibold"} mt={"30px"} fontSize={"13px"} onClick={closeDiv} ref={divRef} >Skip</Text>
+
+
             </Box>
 
-        );
-    }
-    export default MySignUp
+        </Box>
+
+    );
+}
+export default MySignUp

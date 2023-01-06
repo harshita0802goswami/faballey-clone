@@ -4,7 +4,10 @@ import {
   Input,
   Divider,
   Button,
-  Text, Box, Flex, Image
+  Text, Box, Flex, Image,  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons"
 import { Icon } from '@chakra-ui/react'
@@ -12,11 +15,19 @@ import google from "./LoginImages/Login_Image1.png"
 import facebook from "./LoginImages/Login_Image2.png"
 import { useRef, useState } from "react";
 
+import { useMediaQuery } from '@chakra-ui/react'
+
 
 import { useSelector } from "react-redux";
 
 
 function MyLogin() {
+
+
+
+
+  //MEDIA QUERY
+
 
 
   let storeData = useSelector((storeData) => {
@@ -41,19 +52,26 @@ function MyLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    let isFind = true;
     //   if(loginData.email === storeData.email && login)
     if (storeData.length > 1) {
       storeData.map((elem) => {
 
         if (elem.email === loginData.email && elem.password === loginData.password) {
-          alert("LOGIN SUCCESSFULL");
+          alert("LOGIN SUCCESSFUL");
+          isFind = false;
+          return;
         }
+
         return 1;
       })
     }
     else {
       alert("GO BACK AND REGISTER")
+    }
+    if (isFind) {
+      // alert('WRONG CRADINCIAL');
+      <Alert>{`WRONG CRADINCIAL`}</Alert>
     }
 
   }
@@ -79,7 +97,7 @@ function MyLogin() {
   return (
 
     <Box mt={'6%'} >
-      <Box ref={divRef} bg={"white"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
+      <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
         <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
         <Text ml={"5%"} paddingBottom={"19px"} textAlign={"left"} fontFamily={"Lato"} fontSize={"14px"} fontWeight={"bold"}> for a quicker checkout</Text>
