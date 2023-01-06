@@ -19,6 +19,7 @@ export const Products = () => {
     length:'',
     discount:''
   })
+  const [sort,setSort] = useState('');
 
   const changeFilter = (key,value)=>{
     let newValue = value;
@@ -30,11 +31,17 @@ export const Products = () => {
       ...filters,[key]:newValue
     })
   }
+
 console.log(filters);
 
+const changeSort = (value)=>{
+  console.log(value+" sort value")
+  setSort(value);
+}
+console.log(sort);
   const fetchData = async ()=>{
     setLoading(true)
-    let res = await fetch(`https://enormous-childlike-gorgonzola.glitch.me/products?${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
+    let res = await fetch(`https://enormous-childlike-gorgonzola.glitch.me/products?${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
     let data = await res.json();
     console.log(data);
     setProducts(data);
@@ -91,11 +98,11 @@ console.log(filters);
   console.log(showAlert);
   useEffect(()=>{
     fetchData();
-  },[filters])
+  },[filters,sort])
   return (
     <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-between'} gap={'15px'} >
         <CategoryList changeFilter={changeFilter}/>
-        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading}/>
+        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort}/>
 
         {showSuccess?
             <Container  fontSize="1rem" gap="3px" h={'40px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="10%" left="45%"  borderRadius="8px">
