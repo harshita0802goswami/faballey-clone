@@ -16,6 +16,10 @@ import {
   Button,
   Divider, Center
 } from '@chakra-ui/react'
+import { useMediaQuery } from '@chakra-ui/react';
+
+
+
 import source1 from "./Footer-Images/footer_image1.png"
 import source2 from "./Footer-Images/footer_image2.png"
 import source3 from "./Footer-Images/footer_image3.png"
@@ -23,6 +27,17 @@ import source4 from "./Footer-Images/footer_image4.png"
 import source5 from "./Footer-Images/footer_image5.png"
 
 function Footer() {
+
+//media query
+const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
+
+
+
+
+
+
+
+
   const containerRef = useRef(null);
 
   const handleScrollTop = () => {
@@ -66,8 +81,8 @@ function Footer() {
       </Box> <br />
 
 
-      <Box boxShadow='xs' w={"75%"} margin={"auto"} display={"flex"} justifyContent={"space-between"}>
-        <TableContainer boxShadow='xs' w={"60%"}>
+      <Box boxShadow='xs' w={"75%"} margin={"auto"} display={ isLargerThan500 ? "grid" : "flex"} justifyContent={"space-between"}>
+        <TableContainer boxShadow='xs' w={isLargerThan500 ? "100%" : "60%"}>
           <Table variant='simple' size='sm'>
             <Thead>
               <Tr border={"none"}>
@@ -113,8 +128,8 @@ function Footer() {
         </TableContainer>
 
 
-        <Box w={"40%"} >
-          <Text color={"black"} fontWeight={'semibold'} fontSize={"16px"} >NEWSLETTER SIGNUP</Text><br />
+        <Box w={isLargerThan500 ? "100%" : "40%"} >
+          <Text  color={"black"} fontWeight={'semibold'} fontSize={"16px"} >NEWSLETTER SIGNUP</Text><br />
           <Box >
             <FormControl justifyContent={"space-evenly"} display={"flex"} margin={"auto"} w={"100%"} >
               <Input w={'60%'} placeholder='Enter Email Adress' type='email' />
