@@ -1,0 +1,618 @@
+#cart-main-div{
+    width: 100%;
+    height: 100px;
+    /* border: 1px solid red; */
+}
+
+
+.CartNavbar{
+    /* border: 1px solid red; */
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    height: 66px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.CartSiteLogo{
+    /* border: 1px solid red; */
+    width: 12.5%;
+    display: flex;
+
+}
+
+.CartSiteLogo>img:nth-child(1){
+    width: 100%;
+}
+
+.CartSiteLogo>img:nth-child(2){
+    display: none;
+}
+
+.CartAllIcons{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+}
+.CartAllIcons>div{
+    /* border: 1px solid red; */
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ReactFaCart{
+    font-size: 20px;
+}
+.ReactMdShip{
+    font-size: 25px;
+    margin-bottom: -5px;
+}
+.CartAllIcons>div P{
+    margin:0;
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: .9rem;
+}
+.ActiveIconLowerBorder{
+    color:rgb(252, 100, 134);
+    border-bottom: 3px solid rgb(252, 100, 134);
+}
+.InactiveIconColor{
+    color: rgb(156, 154, 154);
+}
+.CartUserName{
+    /* border: 1px solid red; */
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: rgb(156, 154, 154);
+    font-weight: 600;
+    word-wrap: none;
+    overflow: hidden;
+}
+.CartUserName>p{
+    margin-left: 5px;
+    width: 90px;
+    overflow: hidden;
+}
+.UserIcon{
+    font-size: 20px;
+    position: static;
+}
+
+.CartDescriptionAndPaymentDetails{
+    /* border: 1px solid red; */
+    margin-top: 69px;
+    width: 99.8%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.CartItemDescription{
+    /* border: 1px solid red; */
+    width: 48%;
+}
+
+.CartItemDescription>p{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.IndivCartDetailCard{
+    /* border: 1px solid gray; */
+    width: 100%;
+    margin: auto;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    background-color: rgb(247, 233, 236);
+}
+
+.ProductImage{
+    /* border: 1px solid red; */
+    width: 13%;
+}
+.ProductImage>img{
+    width: 100%;
+}
+
+.ProductDetailsMainDiv{
+    /* border: 1px solid red; */
+    width: 78%;
+}
+
+.UpperProductDetailsDiv{
+    /* border: 1px solid red; */
+    border-bottom: 1px solid rgb(195, 192, 192) ;
+    width: 100%;
+    display: flex;
+}
+
+.UpperLeftProductDetailsDiv{
+    /* border: 1px solid red; */
+    width: 73%;
+    padding-bottom: 10px;
+}
+.UpperLeftProductDetailsDiv>a{
+    text-decoration: none;
+    color: black;
+}
+.UpperLeftProductDetailsDiv>a:hover{
+    text-decoration: underline;
+}
+.QtySizeColorDetailsDiv{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.QtySizeColorDetailsDiv>p{
+    margin: 0;
+    color: gray;
+    font-size: 13px;
+}
+.UpperLeftProductDetailsDiv>p{
+    margin: 0;
+    color: gray;
+    font-size: 11px;
+}
+.UpperRightProductDetailsDiv{
+    /* border: 1px solid red; */
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 14px;
+}
+
+.UpperRightProductDetailsDiv>p{
+    margin: 0;
+}
+
+.ProductStrikedPriceInCart{
+    text-decoration: line-through;
+    color: gray;
+}
+
+.LowerProductDetailsDiv{
+    /* border: 1px solid red; */
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.EditDetails{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+.EditDetails>p{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+.EditDetails>div{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-right: 25%;
+}
+
+.EditDetails>div>button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: rgb(49, 49, 49);
+}
+.EditDetails>div>p{
+    margin: 0;
+    font-weight: 500;
+}
+.DeleteCartItem{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: right;
+    width: 30%;
+    font-size: 25px;
+    color: gray;
+}
+
+.ReactDeleteIcon:hover{
+    cursor: pointer;
+    color: red;
+}
+/* Product and wishlish routing */
+
+.RouteToProductAndWishListDiv{
+    border: 1px solid gray;
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(252, 100, 134);
+}
+
+.RouteToProductAndWishListDiv>div{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    
+}
+
+.RouteToProductAndWishListDiv p{
+    margin: 0;
+}
+.RouteToProductAndWishListDiv>p:nth-child(2){
+    margin-right: 2%;
+}
+
+.CartPaymentDescriptionDiv{
+    /* border: 1px solid red; */
+    width: 28%;
+    margin-left: 2.8%;
+}
+
+.CartPaymentDescription{
+    width: 100%;
+    margin: auto;
+    background-color: rgb(244, 244, 244);
+    padding-top: 20px;
+    /* border: 1px solid red; */
+}
+
+.CartPaymentDescriptionDiv>p{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.CartPaymentDescription>div{
+    margin: auto;
+    width: 92%;
+}
+
+.Donation{
+    border-bottom: 1px solid gray;
+    width: 100%;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.DonationLeft{
+    width: 85%;
+    /* border: 1px solid red; */
+}
+
+.DonationLeft>p{
+    margin: 0;
+    color: gray;
+    font-size: 11px;
+}
+
+.DonationLeft>h4{
+    color: rgb(86, 85, 85);
+    margin: 0;
+}
+.DonationRight{
+    /* border-bottom: 1px solid gray; */
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.DonationRight>input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(252, 100, 134);
+    
+}
+.ApplyCoupon{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.ApplyCoupon>div{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.ApplyCoupon>div:nth-child(1):hover{
+    cursor: pointer;
+}
+.ApplyCoupon>div:nth-child(2){
+    height: 40px;
+}
+.ApplyCoupon>div>input{
+    width: 75%;
+    height: 96%;
+    outline: 1px solid rgb(252, 100, 134);
+    border-top-left-radius: 5px;
+    border-end-start-radius: 5px;
+}
+
+.ApplyCoupon>div>button{
+    width: 25%;
+    height: 100%;
+    background-color: rgb(252, 100, 134);
+    border-top-right-radius: 5px;
+    border-end-end-radius: 5px;
+}
+.RedeemGift{
+    border-bottom: 1px solid gray;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.ApplyCoupon>p,
+.RedeemGift>p{
+    margin: 0;
+    margin-left: 5px;
+}
+
+.PriceDetailDiv{
+    border-bottom: 1px solid gray;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+
+.PriceDetailDiv>div,
+.TotalAmountDiv{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+.PriceDetailDiv>div>p{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(86, 85, 85);
+}
+
+.TotalAmountDiv{
+    border-bottom: 1px solid gray;
+    color: rgb(252, 100, 134);
+}
+
+.TotalAmountDiv>p{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px;
+}
+
+.PlaceOrderDiv{
+    /* border: 1px solid red; */
+    width: 100%;   
+}
+
+.PlaceOrderDiv>button{
+    width: 100%;
+    margin-top: 20px;
+    height: 45px;
+    border:none;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(252, 100, 134);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.EstimatedDelivery{
+    border: 1px solid gray;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.EstimatedDelivery>p{
+    margin: 0;
+    font-size: 14px;
+    margin-left: 10px;
+    color: gray;
+}
+
+.EstimatedDelivery>p:nth-child(2){
+    margin-top: 10px;
+}
+
+.CartFooter{
+    border-top: 1px solid rgb(187, 186, 186);
+    width: 100%;
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 14px;
+    margin-top: 60px;
+}
+
+.FooterLinks{
+    /* border: 1px solid red; */
+    width: 35%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 10%;
+}
+
+.FooterLinks>div{
+    border-right: 2px solid gray;    
+    width: 25%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.DeleteAlert{
+    position: fixed;
+    top: 40px;
+    left: 30%;
+    right: 30%;
+    width: 35%;
+    z-index: 5;
+    transition: .3s;
+}
+
+
+@media screen and (max-width:750px) {
+    .CartNavbar{
+        background-color: black;
+        justify-content: space-evenly;
+    }
+
+    .CartSiteLogo{
+        width: 18%;
+        margin-right: 30%;
+    }
+    
+    .CartSiteLogo>img:nth-child(1){
+        display: none;
+    }
+    
+    .CartSiteLogo>img:nth-child(2){
+        display: block;
+        width: 100%;
+    }
+
+    .CartAllIcons{
+        display: none;
+        font-size: 14px;
+    }
+    
+    .CartUserName{
+        width: 20%;
+        font-size: 1rem;
+        word-wrap: none;
+        overflow: hidden;
+    }
+    .CartUserName>p{
+        margin-left: 5px;
+        width:100%;
+        overflow: hidden;
+    }
+    .CartDescriptionAndPaymentDetails{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .CartItemDescription,.CartPaymentDescriptionDiv{
+        width: 90%;
+    }
+
+    .EditDetails{
+        font-size: 14px;
+    }
+    .EditDetails>div{
+        width:20%;
+       
+    }
+   
+    .EditDetails>p{
+        font-size: 12px;
+    }
+ 
+    
+    .EditDetails>div>button{
+        font-size: 18px;
+      
+    }
+    
+.CartFooter{
+    flex-direction: column;
+    font-size: 12px;
+    margin-top: 60px;
+}
+
+.FooterLinks{
+    /* border: 1px solid red; */
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    /* padding-right: 10%; */
+    /* margin-right: 20%; */
+}
+
+.FooterLinks>div{
+    /* border: 1px solid black; */
+    border-right: 1.5px solid gray;   
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    padding-left: 2%;
+}
+}
+
+@media screen and (max-width:480px) {
+    .EditDetails{
+        font-size: 14px;
+    }
+    .EditDetails>div{
+        width:40%;
+       
+    }
+    .CartUserName{
+        width: 30%;
+        font-size: 14px;
+        word-wrap: none;
+        overflow: hidden;
+    }
+    .UpperRightProductDetailsDiv{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .FooterLinks{
+        width: 80%;
+    }
+    .RouteToProductAndWishListDiv p{
+       font-size: 12px;
+    }
+}

@@ -1,0 +1,32 @@
+#PaymentProcessingDiv{
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+
+#imgProcess{
+    width: 60%;
+    margin: auto;
+}
+
+#PaymentProcessingDiv img{
+    width: 100%;
+}
+
+#infoPaymentProcessing{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    /* border: 1px solid red; */
+    margin: auto;
+}
+
+#dot{
+    width: 10px;
+    
+}

@@ -1,0 +1,60 @@
+#PaymentGatewayDiv{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 400px;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+#PaymentGatewayDiv>div{
+    margin-bottom: 20px;
+    color: gray;
+    font-size: 15px;
+    /* border: 1px solid red; */
+}
+#PaymentGatewayDiv>div span{
+    color: red;
+}
+#visaImage{
+    width: 15%;
+}
+
+#visaImage img{
+    width: 100%;
+}
+
+#OTPInput{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+#OTPInput>input{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #c8c5c5;
+    outline: none;
+}
+#OTPInput>button{
+    width: 35%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-left:5px ;
+    cursor: pointer;
+    background-color: rgb(24, 120, 185);
+}
+#OTPInput>button:hover{
+    background-color: rgb(87, 166, 219);
+}
+#resendOTP{
+    color: rgb(24, 120, 185);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#wrongOTP>p{
+    color: red;
+}

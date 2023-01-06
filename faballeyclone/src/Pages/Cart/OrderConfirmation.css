@@ -1,0 +1,55 @@
+#OrderConfirmationDiv{
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+#OrderSuccessimgProcess{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+
+
+#OrderConfirmationDiv>div>img{
+    text-align: center;
+    width: 50%;
+    /* border: 1px solid red; */
+}
+
+#infoOrderConfirmation{
+    display: flex;
+    /* flex-direction: column; */
+    width: 40%;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    /* border: 1px solid red; */
+
+}
+#OrderInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80px;
+    justify-content: space-between;
+    width: 60%;
+    margin: auto;
+}
+#OrderInfo>p:first-child{
+    color: green;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+#dot{
+    width: 10px;
+    
+}
