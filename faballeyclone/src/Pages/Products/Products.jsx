@@ -4,6 +4,7 @@ import { CategoryList } from '../../Components/Products/CategoryList/CategoryLis
 import { ProductList } from '../../Components/Products/ProductList/ProductList'
 import {AiFillCheckCircle} from 'react-icons/ai'
 import {MdError} from 'react-icons/md'
+import Pagination from '../../Components/Products/Pagination/Pagination'
 
 export const Products = () => {
   const [products,setProducts] = useState([]);
@@ -39,14 +40,21 @@ const changeSort = (value)=>{
   setSort(value);
 }
 console.log(sort);
+
+const changePages =(value)=>{
+  setCurrentPage(prev=>prev+value);
+}
+
+const changeByClick=(value)=>{
+  setCurrentPage(prev=>value);
+}
   const fetchData = async ()=>{
     setLoading(true)
-    let res = await fetch(`https://cheddar-pentagonal-torta.glitch.me/products?${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
-    
-    
+    let res = await fetch(`https://cheddar-pentagonal-torta.glitch.me/products?_page=${currentPage}&_limit=12${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
+    setTotalProducts(res.headers.get('X-Total-Count'));
     let data = await res.json();
     console.log(data);
-    setTotalProducts(data.length);
+    // setTotalProducts(data.length);
     setProducts(data);
       setInterval(()=>{
         setLoading(false);
@@ -101,12 +109,12 @@ console.log(sort);
   console.log(showAlert);
   useEffect(()=>{
     fetchData();
-  },[filters,sort])
+  },[filters,sort,currentPage])
   return (
     <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-between'} gap={'15px'} >
         <CategoryList changeFilter={changeFilter}/>
-        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort} totalProducts={totalProducts} filters={filters}/>
-
+        <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort} totalProducts={totalProducts} filters={filters} currentPage={currentPage} changeByClick = {changeByClick} setCurrentPage={changePages}/>
+        
         {showSuccess?
             <Container  fontSize="1rem" gap="3px" h={'45px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="5%" left="45%"  borderRadius="8px">
             <AiFillCheckCircle fontSize={"1.2rem"}/> <Text>

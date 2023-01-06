@@ -14,15 +14,16 @@ import {
   MenuDivider,
 } from '@chakra-ui/react'
 import {ChevronDownIcon} from '@chakra-ui/icons'
+import Pagination from '../Pagination/Pagination';
 
-export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalProducts,filters}) => {
+export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalProducts,filters,currentPage,changeByClick,setCurrentPage}) => {
   let renderingData =[0,0,0,0,0,0,0,0,0,0,0,0];
   return (<div style={{width:"79%" ,padding:"4px 20px"}}>
     <Box  className='productListTitle' h={'30px'}  paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'} borderTop='1px solid gray' borderBottom={'1px solid gray'} mb='20px'>
     <Box display="flex" alignItems={'center'}  height={'20px'}>
       <Box paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>{filters.category!=""?filters.category.toUpperCase():'ALL'}</h6></Box>
       <Box paddingLeft={'10px'} paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>{totalProducts} STYLES FOUND</h6></Box>
-      <Box paddingLeft={'10px'}><h6>view 201</h6></Box>
+      <Box paddingLeft={'10px'}><h6>VIEW : PAGE {currentPage} OF {Math.ceil(totalProducts/12)!=0?Math.ceil(totalProducts/12):1}</h6></Box>
     </Box>
     <Box>
       <Box width={'190px'}  display="flex" alignItems={'center'} height={'20px'}>
@@ -57,6 +58,8 @@ export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalP
         })
       }
     </Box>}
+    <Pagination currentPage={currentPage} changeByClick = {changeByClick} setCurrentPage={setCurrentPage} totalProducts={totalProducts}/>
+        
     </div>
   )
 }
