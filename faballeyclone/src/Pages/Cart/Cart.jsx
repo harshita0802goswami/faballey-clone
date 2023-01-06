@@ -9,12 +9,7 @@ import { MdLocalShipping, MdDelete } from "react-icons/md";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import EmptyCart from "../../Components/CartAndCheckout/EmptyCart";
 import { RiAddCircleFill } from "react-icons/ri";
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
+import { Box, Alert, AlertIcon, AlertTitle, AlertDescription} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
@@ -94,7 +89,7 @@ function Cart() {
 
   function ApplyCouponCode() {
     console.log(CouponCode);
-    if (CouponCode === "newuser25") {
+    if (CouponCode === "new25") {
       setCartSubTotal((prev) => prev * 0.75);
       setDisableCouponButton(true);
       CouponSuccess();
@@ -147,32 +142,28 @@ function Cart() {
       <CartNavbar CartIconStyle={true} />
 
       {/* Alert */}
-      <div
-        className={styles.DeleteAlert}
-        style={deleteAlertTime ? { opacity: 0 } : { opacity: 1 }}
-      >
-        <Alert status="warning">
+      <Box margin={"auto"} w="100%" position="fixed" transition=".3s" zIndex="5"
+        style={deleteAlertTime ? { opacity: 0 } : { opacity: 1 }}>
+      <Alert w="300px" margin="auto" status="warning">
           <AlertIcon />1 item deleted from cart
         </Alert>
-      </div>
-      <div
-        className={styles.DeleteAlert}
-        style={CouponSucces ? { opacity: 0 } : { opacity: 1 }}
-      >
-        <Alert status="success">
+      </Box>
+
+      <Box margin={"auto"} w="100%" position="fixed" transition=".3s" zIndex="5"
+         style={CouponSucces ? { opacity: 0 } : { opacity: 1 }}>
+      <Alert w="300px" margin="auto" status="success">
           <AlertIcon />
-          Coupon applied successfully.
+          Coupon applied successfully
         </Alert>
-      </div>
-      <div
-        className={styles.DeleteAlert}
-        style={CouponFailure ? { opacity: 0 } : { opacity: 1 }}
-      >
-        <Alert status="error">
+      </Box>
+      <Box margin={"auto"} w="100%" position="fixed" transition=".3s" zIndex="5"
+         style={CouponFailure ? { opacity: 0 } : { opacity: 1 }}>
+      <Alert w="300px" margin="auto" status="error">
           <AlertIcon />
           Wrong coupon code.
         </Alert>
-      </div>
+      </Box>
+
       {/* Cart Details */}
       <div className={styles.CartDescriptionAndPaymentDetails}>
         <div className={styles.CartItemDescription}>

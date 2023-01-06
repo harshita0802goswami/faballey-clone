@@ -18,7 +18,7 @@ function OrderConfirmation() {
         </div>
         <div id="OrderInfo">
             <p>Payment Successful </p>
-            <p>Order ID:- AU-28425661 </p>
+            <p>Order ID:- fab-1625871004 </p>
         </div>
         <div id='infoOrderConfirmation'>
             <p>Redirecting you to Home Page </p><div id='dot'>{dot}</div>

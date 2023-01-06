@@ -183,15 +183,6 @@ form textarea{
     margin-top: 10px;
 }
 
-.IncomleteAddressAlert{
-    position: fixed;
-    top: 40px;
-    left: 30%;
-    right: 30%;
-    width: 35%;
-    z-index: 5;
-    transition: .3s;
-}
 
 @media screen and (max-width:750px) {
     .CheckoutMainDiv{

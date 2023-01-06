@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
+import { Box,
   Alert,
   AlertIcon,
   AlertTitle,
@@ -70,15 +70,14 @@ const Checkout = () => {
       <CartNavbar ShippingIconStyle={true} />
 
       {/* Address and Payment Details */}
-      <div
-        className={styles.IncomleteAddressAlert}
-        style={IncompleteAddress ? { opacity: 0 } : { opacity: 1 }}
-      >
-        <Alert status="error">
+      <Box margin={"auto"} w="100%" position="fixed" transition=".3s" zIndex="5"
+        style={IncompleteAddress ? { opacity: 0 } : { opacity: 1 }}>
+      <Alert w="300px" margin="auto" status="error">
           <AlertIcon />
           Please fill all address details
         </Alert>
-      </div>
+      </Box>
+
       <div className={styles.CheckoutMainDiv}>
         <div className={styles.AddressMainDiv}>
           <p>Where do you want us to deliver</p>

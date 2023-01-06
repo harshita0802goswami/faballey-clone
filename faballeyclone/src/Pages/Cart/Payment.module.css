@@ -129,6 +129,7 @@
     height: 40px;
     width: 100%;
     padding-left: 4px;
+    border: 1px solid rgb(174, 173, 173);
 }
 
 .SpecificPaymentMethod>form>div:nth-child(3){
@@ -141,10 +142,66 @@
     width: 20%;
     margin-right: 5%;
     text-align: center;
+    height: 35px;
+    border: 1px solid rgb(174, 173, 173);
+}
+
+
+.cvvDiv>input:nth-child(3){
+   margin-bottom: -5px;
 }
 .questionIcon{
     color: gray;
     font-size: 24px;
+}
+
+.savedCards{
+    /* border: 1px solid red; */
+    margin-top: 10px;
+}
+
+.savedCards>div{
+    /* border: 1px solid red; */
+    width: 100%;
+}
+
+.savedCards>div:nth-child(2){
+    margin-top: 5px;
+    border-top: 1px solid rgb(174, 173, 173);
+}
+
+.savedCards>div>button{
+    width: fit-content;
+    background-color: rgb(252, 100, 134);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.savedCards>div>p{
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: gray;
+}
+
+.savedCardDetail>div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color:rgb(225, 225, 225);
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.savedCardDetail>div>button{
+    width: fit-content;
+    background-color: rgb(252, 100, 134);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .SpecificPaymentMethod>form>div>button{
@@ -229,4 +286,82 @@
     font-size: 14px;
     margin-left: 10px;
     color:rgb(69, 68, 68);
+}
+
+.IncomletePaymentDetailAlert{
+    position: fixed;
+    top: 40px;
+    z-index: 5;
+    transition: .3s;
+}
+
+
+@media screen and (min-width:481px) and (max-width:750px) {
+    .PaymentMainDiv{
+       flex-direction: column;
+       align-items: center;
+    }
+
+    .PaymentMethodDiv{
+       width: 92%;
+    }
+
+    .PaymentDetails{
+        /* border: 1px solid red; */
+        width: 92%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .PaymentMainDiv{
+        flex-direction: column;
+        align-items: center;
+     }
+ 
+     .PaymentMethodDiv{
+        width: 92%;
+        font-size: 12px;
+     }
+ 
+     .PaymentDetails{
+         /* border: 1px solid red; */
+         width: 92%;
+         margin-left: 0%;
+         margin-top: 25px;
+     }
+
+     .SpecificPaymentMethod>form>div:nth-child(3){
+      display: grid;
+      margin-right: 0%;
+      grid-template-columns: repeat(2,1fr);
+    }
+    
+    .SpecificPaymentMethod>form>div:nth-child(3)>input{
+        width: 80%;
+        text-align: center;
+        /* margin: auto; */
+        height: 35px;
+        border: 1px solid rgb(174, 173, 173);
+        margin-bottom: 10px;
+    }
+    .cvvDiv>input:nth-child(3){
+        margin-top: 10px;
+     }
+     .questionIcon{
+        display: none;
+     }
+     .PaymentMethodDiv>p{
+        color:rgb(103, 102, 102);
+        font-weight: 400;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .securetransaction>div>p{
+        font-size: 9px;
+    }
+    .securetransaction>div>p:nth-child(2){
+        margin-right: 2%;
+    }
 }
