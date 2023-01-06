@@ -1,0 +1,215 @@
+.CheckoutMainDiv{
+    margin-top: 69px;
+    width: 99.8%;
+    display: flex;
+    justify-content: center;
+}
+
+.AddressMainDiv{
+    /* border: 1px solid red; */
+    width: 48%;
+}
+
+.AddressMainDiv>p{
+    color:rgb(103, 102, 102);
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form{
+    border: 1px solid rgb(174, 173, 173);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+form>div:nth-child(1),
+form>div:nth-child(2),
+form>div:nth-child(3){
+    /* border: 1px solid red; */
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+form>div>div{
+    /* border: 1px solid red; */
+    width: 49.5%;
+}
+
+
+
+form>div:nth-child(4){
+    width: 95%;
+    margin-bottom: 5px;
+}
+
+form>div:nth-child(5){
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 95%;
+    margin-bottom: 5px;
+}
+
+form>div:nth-child(6){
+    width: 95%;
+    height: 42px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+form input[type="text"],
+form select{
+    border: 1px solid rgb(174, 173, 173);
+    width: 100%;
+    margin-top: 5px;
+    height: 40px;
+    outline: none;
+    font-size: 14px;
+}
+
+form label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+form>div:nth-child(6)>button{
+    width: 250px;
+    height: 100%;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(252, 100, 134);
+}
+
+form textarea{
+    width: 100%;
+    border: 1px solid rgb(174, 173, 173);
+    height: 100px;
+    font-size: 14px;
+    margin-top: 5px;
+    outline: none;
+}
+
+
+/* payment div */
+
+.PaymentDetailsDiv{
+    width: 28%;
+    margin-left: 2.8%;
+}
+
+.PaymentDetailsDiv>p{
+    color:rgb(103, 102, 102);
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.EditCart{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 10px;
+    color: rgb(252, 100, 134);
+    height: 35px;
+}
+
+.EditCart p{
+    font-size:16px ;
+    font-weight: 500;
+}
+
+.EditCartIcon{
+    font-size: 18px;
+}
+
+.PaymentDetailsSubDiv{
+    /* border: 1px solid red; */
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.PaymentDetailsSubDiv>div{
+    border-bottom: 1px solid rgb(174, 173, 173);
+    width: 94%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.PaymentDetailsSubDiv>div>div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.CheckoutTotal{
+    width: 100%;
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    color: rgb(252, 100, 134);
+}
+
+.EstimatedDelivery{
+    border: 1px solid rgb(174, 173, 173);
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.EstimatedDelivery>p{
+    margin: 0;
+    font-size: 14px;
+    margin-left: 10px;
+    color: gray;
+}
+
+.EstimatedDelivery>p:nth-child(2){
+    margin-top: 10px;
+}
+
+
+@media screen and (max-width:750px) {
+    .CheckoutMainDiv{
+        flex-direction: column;
+    }
+
+    .AddressMainDiv{
+        /* border: 1px solid red; */
+        width: 94%;
+        margin: auto;
+    }
+    .PaymentDetailsDiv{
+        width: 94%;
+    }
+
+}
+
+@media screen and (max-width:412px){
+
+    form>div:nth-child(1),
+    form>div:nth-child(2),
+    form>div:nth-child(3){
+        /* border: 1px solid red; */
+        flex-direction: column;
+    }
+
+    form>div>div{
+        width: 100%;
+    }
+}

@@ -1,0 +1,35 @@
+.topBar{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    box-shadow: 0 0 0 .5px rgb(174, 172, 172);
+    position: fixed;
+    margin-bottom: 100px;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background-color: #fff;
+}
+.topBar ul > li{
+    list-style: none;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0 5px;
+    border-right: 1px solid black;
+}
+.topBar ul > li:last-child{
+    border: none;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.midBar{
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 25px;
+    align-items: baseline;
+}
+.midBar > div > img{
+    width: 150px;
+}

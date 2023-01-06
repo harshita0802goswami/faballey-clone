@@ -1,0 +1,226 @@
+.Banner-carousel{
+    position: relative;
+    overflow: hidden;
+}
+.carousel-images{
+    display: flex;
+    scroll-behavior:smooth;
+    /* height: 300px; */
+    
+    transition-duration: 200ms;
+    overflow-x: hidden;
+}
+.carousel-images img {
+    min-width: 100%;
+}
+.pre-btn,.next-btn{
+    height: 100%;
+    position: absolute;
+    color: #fc6486;
+    display: flex;
+    /* background-color: #fff; */
+    justify-content: center;
+    align-items: center;
+}
+.next-btn{
+    right: 0;
+}
+
+.pre-btn p,.next-btn p{
+    background-color: #fff;
+    padding: 4px 13px 6px;
+    margin: 0 20px;
+    font-weight: bolder;
+    border-radius: 10px;
+    font-size: 20px;
+    border: 2px solid skyblue;
+}
+
+
+.title{
+    font-size: 26px;
+    font-weight: 600;
+    /* padding: 25px; */
+    line-height: 85px;
+    color: #323232;
+    /* letter-spacing: px ; */
+}
+.title2{
+    font-size: 21px;
+    font-weight: 600;
+    /* padding: 25px; */
+    line-height: 90px;
+    color: #323232;
+}
+.titlePara{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 60px;
+    margin-top: -20px;
+    color: #323232;
+    letter-spacing: 1px ;
+}
+.tranding-cont > .tranding-img{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    width: 97.5%;
+    margin: auto;
+    /* max-width: 980px; */
+}
+
+.imgCont{
+    width: 97.5%;
+    margin: auto;
+}
+
+.dealsImg{
+    width: 97.5%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+.spotlightImg{
+    width: 97.5%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+.exploreImg{
+    width: 97.5%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* call to action part */
+.callToAction{
+    width: 97.5%;
+    margin:  5em auto 0; 
+    display: flex;
+}
+.callToAction div:first-child{
+    width: 60%;
+}
+.callToAction div:last-child{
+    width: 40%;
+    padding:  0 40px;
+    text-align: left;
+}
+.instaShop{
+    background-color: #FBFBFB;
+    margin-top: 35px;
+    padding-bottom: 20px;
+}
+.instaShop > div{
+    display: flex;
+}
+.instaShop > div > div:first-child{
+    width: 35%;
+    padding: 0 15px 0 35px;
+    box-sizing: border-box;
+    /*  */
+}
+.instaShop > div > div:first-child img{
+    height: 100%;
+    width: 100%;
+}
+.instaShopCard{
+    margin: 0;
+    width: 65%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    
+}
+.instaCardRel{
+    position: relative;
+}
+.instaCardAbs{
+    position: absolute;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    top: 0;
+    opacity: 0;
+    color: white;
+    overflow: hidden;
+}
+.instaCardAbs h4, .instaCardAbs b{
+    font-size: 12px;
+    padding: 10px 0;
+}
+.instaCardAbs button{
+    background-color: #fc6486;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 8px;
+    margin-top: 20px;
+}
+.instaCardRel:hover .instaCardAbs{
+    opacity: 1;
+}
+
+@media only screen and (max-width: 900px){
+    .callToAction{
+        display: block;
+    }
+    .callToAction div:first-child{
+        width: 100%;
+    }
+    .callToAction div:last-child{
+        width: 100%;
+        text-align: center;
+    }
+    .callToAction div:last-child h1{
+        margin: 15px 0;
+    }
+    .callToAction div:last-child hr{
+        margin: 10px auto !important;
+    }
+    .spotlightImg{
+        grid-template-columns: repeat(3,  1fr);
+    }
+
+    .instaShop > div{
+       display: block;
+    }
+    .instaShop > div > div:first-child{
+        width: 70%;
+        margin: auto;
+        padding: 10px;
+        display: none;
+    }
+    .instaShopCard{
+        margin: 0;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0 10px;
+    }
+    .title{
+        font-size: 20px;
+        line-height: 50px;
+    }   
+    .title2{
+        font-size: 20px;
+        line-height: 40px;
+        padding: 0 30px 10px;
+    }   
+}
+
+@media only screen and (max-width: 650px){
+    .tranding-cont > .tranding-img{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .dealsImg{
+        grid-template-columns: repeat(3,  1fr);
+    }
+    .exploreImg{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
