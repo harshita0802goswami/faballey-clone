@@ -1,0 +1,81 @@
+.img-container > div > img {
+  width: 500px;
+  height: 600px;
+}
+.img-container > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+  /* width: 200px;
+  height: 300px; */
+}
+.size {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid black; */
+  width: 95%;
+  /* background-color: aquamarine; */
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.size p {
+  margin-right: 1.25em;
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  padding: 20px 0.9em;
+  font-weight: bold;
+}
+.size p:hover{
+  background-color: black;
+  color: white;
+}
+.activeSize:hover {
+  background-color: black;
+  color: white;
+}
+.cartBtns {
+  display: flex;
+  /* padding: 16px 2em; */
+  justify-content: space-between;
+}
+
+.addToCart {
+  color: white;
+  padding: 16px 5em;
+  background-color: rgb(252, 100, 134);
+}
+.addToWishlist {
+  display: flex;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 10px 3em;
+  margin-right: 55px;
+}
+.addToWishlist i {
+  padding: 3px;
+}
+.addToWishlist:hover {
+  color: rgb(252, 100, 134);
+}
+.addToWishlist,
+.addToCart {
+  font-weight: bold;
+  cursor: pointer;
+}
+/* #delivery{
+  padding: 12px 32px;
+  border: 1px solid black;
+} */
+#delivery{
+  display: flex;
+}
+#delivery > p{
+  margin: 5px;
+  cursor: pointer;
+  padding: 10px 30px;
+  border: 1px solid rgb(185, 176, 176);
+}
+#delivery > p > i {
+  padding: 2px;
+}
