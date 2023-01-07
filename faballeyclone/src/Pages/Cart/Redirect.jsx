@@ -12,11 +12,11 @@ function Redirect() {
     },[])
  
   return (
-    <div id='redirectDiv'>
-        <div id='imgProcess'>
-            <img src="https://flevix.com/wp-content/uploads/2019/12/Quarter-Circle-Loading-Image-1.gif" alt="" />
+    <div className='redirectDiv'>
+        <div className='imgProcess'>
+            <img src="https://gifimage.net/wp-content/uploads/2017/09/animated-loading-gif-transparent-background-8.gif" alt="" />
         </div>
-        <div id='infoRedirect'>
+        <div className='infoRedirect'>
         <p>Redirecting you to Payment Gateway... </p>
         </div>
     </div>
