@@ -14,11 +14,11 @@ function CheckoutPaymentDetails() {
             <div>
               <div>
                 <p>Sub Total</p>
-                <p>₹ {PaymentToMake.SubTotal}</p>
+                <p>₹ {(+PaymentToMake.SubTotal).toFixed(2)}</p>
               </div>
               <div style={{ color: "rgb(252, 100, 134)" }}>
                 <p>Discount</p>
-                <p>-₹ {PaymentToMake.Discount}</p>
+                <p>-₹ {(+PaymentToMake.Discount).toFixed(2)}</p>
               </div>
               <div>
                 <p>Donation</p>
@@ -27,7 +27,7 @@ function CheckoutPaymentDetails() {
             </div>
             <div className={styles.CheckoutTotal}>
               <p>Total</p>
-              <p>₹ {PaymentToMake.Total}</p>
+              <p>₹ {(+PaymentToMake.Total).toFixed(2)}</p>
             </div>
           </div>
     </>

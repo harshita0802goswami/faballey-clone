@@ -51,7 +51,7 @@ export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalP
         })
       }
     </Box>:
-    <Box display={"grid"} gridTemplateColumns={"repeat(4,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
+    <Box display={"grid"} gridTemplateColumns={"repeat(3,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
       {
         products.map((elem)=>{
           return <ProductCard data={elem} addToCart={addToCart} isLoading={isLoading}/>

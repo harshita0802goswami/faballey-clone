@@ -13,7 +13,7 @@ import { Box, Alert, AlertIcon, AlertTitle, AlertDescription} from "@chakra-ui/r
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { json, useNavigate,Link } from "react-router-dom";
 function Cart() {
   let [CartItems, setCartItems] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
@@ -33,20 +33,20 @@ function Cart() {
   }, [Deleted]);
 
   function getData() {
-    fetch(`http://localhost:3001/CartItems`)
+    fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart`)
       .then((res) => res.json())
       .then((val) => {
         setIsLoading(false);
         let subTotal = val.reduce((acc, ele) => {
-          return ele.MRP * ele.Qty + acc;
+          return ele.price1 * ele.qty + acc;
         }, 0);
         // console.log(subTotal);
         setCartSubTotal(subTotal);
         setCartItems(val);
-      });
+      }).catch(error=>console.log(error));
   }
   function DeleteCartItem(id) {
-    fetch(`http://localhost:3001/CartItems/${id}`, {
+    fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => {
@@ -56,7 +56,7 @@ function Cart() {
       .then((val) => {
         DeleteAlert();
         setIsDeleted(false);
-      });
+      })
   }
 
   function DeleteAlert() {
@@ -184,7 +184,7 @@ function Cart() {
           <div className={styles.RouteToProductAndWishListDiv}>
             <div>
               <BsFillCaretLeftFill />
-              <p>Continue Shopping</p>
+              <p><Link to='/'>Continue Shopping</Link></p>
             </div>
             <p>Add more from wishlist</p>
           </div>
