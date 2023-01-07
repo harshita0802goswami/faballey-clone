@@ -24,13 +24,13 @@ const MidbarList = () => {
                list={['Dresses', 'Co-ords','Skirts','Bottoms','Basics','Classics','Workwear','Loungewear','Winterwear']}
                list2={['Party', 'Vacation','Work','Loungewear']}
                h2='SHOP BY OCCASION'
+               img='https://img.faballey.com/images/menu/fapartywear.jpg'
               />
             </li>   
             <li>TOPS
             <MidbarCard 
                list={['Crop Tops', 'Tank Tops','T-Shirts','Shirts','Basics','Blouses','Maxi Tops']}
                list2={['Off Shoulder Tops', 'Cold Shoulder Tops','One Shoulder Tops']}
-               img='https://img.faballey.com/images/menu/topmenuimg1.jpg'
                h1='SHOP BY STYLE'
               />
             </li>
