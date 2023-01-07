@@ -4,13 +4,26 @@ import { MdDelete } from "react-icons/md";
 import { BsPlusCircle } from "react-icons/bs";
 import { SlMinus } from "react-icons/sl";
 import { useState } from "react";
+import { useRef, useEffect } from "react";
+import {Link} from 'react-router-dom'
 const CartItemsCard = ({ Cartdata = [], DeleteFunction, isUpdate }) => {
-  let [quantity, setQuantity] = useState(Cartdata.Qty);
+
+  let [RandomSize, setRandomSize] = useState('')
+  let [RandomSKUCode, setRandomSKUCode] = useState('')
+  let [colorName, setColorName] = useState('')
+
+  useEffect(()=>{
+    random_item(items);
+    generateString(8)
+    ColorString();
+  },[])
+  
+  let [quantity, setQuantity] = useState(Cartdata.qty);
   function SendQtyToServer(id, quantity) {
-    fetch(`http://localhost:3001/CartItems/${id}`, {
+    fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ Qty: quantity }),
+      body: JSON.stringify({ qty: quantity }),
     })
       .then((res) => {
         isUpdate(true)
@@ -29,29 +42,68 @@ const CartItemsCard = ({ Cartdata = [], DeleteFunction, isUpdate }) => {
     setQuantity((prev) => prev - 1);
     SendQtyToServer(id, (quantity = quantity - 1));
   }
+
+
+  // Random String //
+
+  // program to generate random strings
+
+// declare all characters
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    let string =Cartdata.category.toUpperCase()+"-"+(result)
+    setRandomSKUCode(string)
+}
+
+
+var items = ['M', 'S', 'L', 'XL'];
+function random_item(items)
+{
+  
+let size= items[Math.floor(Math.random()*items.length)];
+     setRandomSize(size)
+}
+
+function ColorString(){
+  let string = Cartdata.color;
+  let newstr='';
+  let FirstChar = string.charAt(0).toUpperCase();
+  for(let i=1; i<string.length; i++){
+      newstr= newstr+string.charAt(i);
+  }
+  newstr=FirstChar+newstr
+  setColorName(newstr)
+}
+
+
   return (
     <div>
       <div className={styles.IndivCartDetailCard}>
         <div className={styles.ProductImage}>
-          <img src={Cartdata.image} alt="" />
+          <img src={Cartdata.img1} alt="" />
         </div>
         <div className={styles.ProductDetailsMainDiv}>
           <div className={styles.UpperProductDetailsDiv}>
             <div className={styles.UpperLeftProductDetailsDiv}>
-              <a href="">{Cartdata.title}</a>
+            <Link to={`/products/${Cartdata.id}`}>{Cartdata.title}</Link>
               <div className={styles.QtySizeColorDetailsDiv}>
-                <p>Size: {Cartdata.Size}</p>
-                <p>Qty: {Cartdata.Qty}</p>
-                <p>Color: {Cartdata.Color}</p>
+                <p>Size: {RandomSize}</p>
+                <p>Qty: {quantity}</p>
+                <p>Color: {colorName}</p>
               </div>
-              <p className={styles.ProductCode}>SKU CODE : TOP05375A</p>
+              <p className={styles.ProductCode}>SKU CODE : {RandomSKUCode}</p>
             </div>
             <div className={styles.UpperRightProductDetailsDiv}>
               <p className={styles.ProductPriceInCart}>
-                Rs. {Cartdata.MRP * quantity}
+                Rs. {Cartdata.price1 * quantity}
               </p>
               &nbsp;
-              <p className={styles.ProductStrikedPriceInCart}>Rs. 7000</p>
+              <p className={styles.ProductStrikedPriceInCart}>{Cartdata.price2}</p>
             </div>
           </div>
           <div className={styles.LowerProductDetailsDiv}>
