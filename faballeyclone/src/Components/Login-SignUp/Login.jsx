@@ -70,8 +70,8 @@ function MyLogin() {
       alert("GO BACK AND REGISTER")
     }
     if (isFind) {
-      // alert('WRONG CRADINCIAL');
-      <Alert>{`WRONG CRADINCIAL`}</Alert>
+      alert('WRONG CRADINCIAL');
+      
     }
 
   }
@@ -96,7 +96,7 @@ function MyLogin() {
   };
   return (
 
-    <Box mt={'6%'} >
+    <Box mt={'6%'} textAlign={"center"} >
       <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
         <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
