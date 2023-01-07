@@ -5,6 +5,7 @@ import { BsPlusCircle } from "react-icons/bs";
 import { SlMinus } from "react-icons/sl";
 import { useState } from "react";
 import { useRef, useEffect } from "react";
+import {Link} from 'react-router-dom'
 const CartItemsCard = ({ Cartdata = [], DeleteFunction, isUpdate }) => {
 
   let [RandomSize, setRandomSize] = useState('')
@@ -89,7 +90,7 @@ function ColorString(){
         <div className={styles.ProductDetailsMainDiv}>
           <div className={styles.UpperProductDetailsDiv}>
             <div className={styles.UpperLeftProductDetailsDiv}>
-              <a href="">{Cartdata.title}</a>
+            <Link to={`/products/${Cartdata.id}`}>{Cartdata.title}</Link>
               <div className={styles.QtySizeColorDetailsDiv}>
                 <p>Size: {RandomSize}</p>
                 <p>Qty: {quantity}</p>
