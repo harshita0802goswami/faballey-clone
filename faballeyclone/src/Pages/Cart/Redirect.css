@@ -1,30 +1,27 @@
-#redirectDiv{
+.redirectDiv{
     width: 60%;
     margin: auto;
-    margin-top: 50px;
     display: flex;
+    height: 500px;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     /* border: 1px solid red; */
 }
 
-#imgProcess{
+.imgProcess{
     /* border: 1px solid red; */
-
-    width: 60%;
+    width: 16%;
 }
 
-#redirectDiv img{
+.redirectDiv img{
     width: 100%;
 }
 
-#infoRedirect{
+.infoRedirect{
     /* border: 1px solid red; */
-
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
