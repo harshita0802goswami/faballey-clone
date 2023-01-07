@@ -13,7 +13,7 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
   return (
     <div>
       {isLoading?<Box>
-      <Skeleton  width={"100%"} h='300px' />
+      <Skeleton  width={"100%"} h='400px' />
       <Box padding={"10px"}>
         <Box h={"110px"}>
         <SkeletonText mt='3' noOfLines={3} spacing='4' skeletonHeight='4' />
@@ -44,11 +44,14 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
     </Box>:
     <Box border={"1px solid gray"}>
       <div onMouseEnter={()=>changeImage(true)} onMouseLeave={()=>changeImage(false)}>
-      <Link to={`/products/${data.id}`}>{image?<img src={data.img1} alt="" width={"100%"} />:<img src={data.img2} alt="" width={"100%"} />}</Link>
+      <div position='relative' zIndex={'100'}>
+      <Box textAlign={'center'}  fontSize='12px'  display={'flex'} justifyContent='center' alignItems={'center'}   color={'white'} backgroundColor={'rgb(50,50,50)'} marginTop={'5px'} marginLeft={'5px'} width={'45px'} h={'45px'} borderRadius={'50%'} position={'absolute'} fontWeight='500'>{data.discount}% OFF</Box>
+<Link to={`/products/${data.id}`}>{image?<img src={data.img1} alt="" width={"100%"} />:<img src={data.img2} alt="" width={"100%"} />}</Link>
+      </div>
       </div>
       <Box padding={"10px"}>
-        <Box h={"110px"}>
-          <Text fontSize="sm">
+        <Box marginBottom={'12px'}>
+          <Text fontSize="sm" overflow={'hidden'}>
             {data.title}
           </Text>
           <h3 className="price">
@@ -72,12 +75,13 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
               onClick={() => {
                 setLikeToggle(false);
               }}
-              size={"1.7rem"}
+              size={"2rem"}
+              // marginBottom={''}
               cursor={"pointer"}
             />
           ) : (
             <FcLikePlaceholder
-              size={"1.7rem"}
+              size={"2rem"}
               cursor={"pointer"}
               onClick={() => {
                 setLikeToggle(true);
@@ -92,7 +96,7 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
             color={"white"}
             colorScheme={'rgb(252,100,134)'}
             width={"60%"}
-            height={"28px"}
+            height={"32px"}
             fontSize={'0.8rem'}
             fontWeight={'500'}
           >
