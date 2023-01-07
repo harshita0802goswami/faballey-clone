@@ -4,6 +4,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { useState } from "react";
 import "./ProductCard.css";
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ data,addToCart,isLoading}) => {
   const [likeToggle, setLikeToggle] = useState(false);
@@ -43,7 +44,7 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
     </Box>:
     <Box border={"1px solid gray"}>
       <div onMouseEnter={()=>changeImage(true)} onMouseLeave={()=>changeImage(false)}>
-      {image?<img src={data.img1} alt="" width={"100%"} />:<img src={data.img2} alt="" width={"100%"} />}
+      <Link to={`/products/${data.id}`}>{image?<img src={data.img1} alt="" width={"100%"} />:<img src={data.img2} alt="" width={"100%"} />}</Link>
       </div>
       <Box padding={"10px"}>
         <Box h={"110px"}>
@@ -71,7 +72,7 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
               onClick={() => {
                 setLikeToggle(false);
               }}
-              size={"1.9rem"}
+              size={"1.7rem"}
               cursor={"pointer"}
             />
           ) : (
