@@ -84,9 +84,9 @@ function MySignUp() {
     }
 
     //handle submit 
-    const formSubmitHandler = (e) => {
+    const formSubmitHandler = (e) => {  
         e.preventDefault();
-
+        localStorage.setItem("userName",input.name)
         Action(input, dispatch)
 
 
