@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../../Pages/Cart/Cart.module.css'
 import { FaShoppingCart, FaCreditCard, FaUserAlt } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md"
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 function CartNavbar(props) {
   let NavigateToPage = useNavigate();
   function Navigate(link){
     NavigateToPage(link)
   }
+
+  let [username, setUsername] = useState('');
+
+  useEffect(()=>{
+    let name = JSON.parse(localStorage.getItem("userName")) || '';
+    setUsername(name);
+  },[username])
 
 
   return (
@@ -32,7 +40,7 @@ function CartNavbar(props) {
     </div>
     <div className={styles.CartUserName}>
       <FaUserAlt className={styles.UserIcon}/>
-      <p>nishant</p>
+      <p>{username}</p>
     </div>
   </div>
 </div>
