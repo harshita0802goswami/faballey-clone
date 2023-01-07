@@ -15,13 +15,57 @@ import google from "./LoginImages/Login_Image1.png"
 import facebook from "./LoginImages/Login_Image2.png"
 import { useRef, useState } from "react";
 
+
+import { GoogleAuthProvider,signInWithPopup } from "firebase/auth";
+import { webAuth } from "./AuthFireBase";
+
+
+
+
 import { useMediaQuery } from '@chakra-ui/react'
+
+
 
 
 import { useSelector } from "react-redux";
 
 
+
 function MyLogin() {
+
+
+
+  //GOOGLE AUTH
+
+  const GoogleAuth = ()=>{
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(webAuth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    alert("LOGIN SUCESSFULL")
+    
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+
+    alert(errorMessage)
+    
+    // ...
+  });
+
+
+  }
 
 
 
@@ -59,6 +103,7 @@ function MyLogin() {
 
         if (elem.email === loginData.email && elem.password === loginData.password) {
           alert("LOGIN SUCCESSFUL");
+          // console.log(localStorage.getItem("userName"));
           isFind = false;
           return;
         }
@@ -70,8 +115,8 @@ function MyLogin() {
       alert("GO BACK AND REGISTER")
     }
     if (isFind) {
-      // alert('WRONG CRADINCIAL');
-      <Alert>{`WRONG CRADINCIAL`}</Alert>
+      alert('WRONG CRADINCIAL');
+      
     }
 
   }
@@ -96,7 +141,7 @@ function MyLogin() {
   };
   return (
 
-    <Box mt={'6%'} >
+    <Box mt={'6%'} textAlign={"center"} >
       <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
         <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
@@ -120,7 +165,7 @@ function MyLogin() {
 
 
         <Box margin={"auto"} justifyContent={"center"} gap={"8px"} w="80%" display={"flex"}>
-          <Image cursor={"pointer"} w={"42%"} src={google} alt={"google"} />
+          <Image cursor={"pointer"} w={"42%"} src={google} onClick={GoogleAuth} alt={"google"} />
           <Image cursor={"pointer"} w={"42%"} src={facebook} alt={"facebook"} />
 
 
