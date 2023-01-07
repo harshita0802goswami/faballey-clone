@@ -26,7 +26,7 @@ function PaymentGateway() {
     let [DeleteData, setDeleteData]  =useState();
             async function deleteData(){
           
-              let fetch1 = await fetch("https://enormous-childlike-gorgonzola.glitch.me/cart")
+              let fetch1 = await fetch("https://cheddar-pentagonal-torta.glitch.me/cart")
               let data = await fetch1.json();
               // console.log(data);
               let uniqueIDArr = [];
@@ -44,7 +44,7 @@ function PaymentGateway() {
                  } 
               console.log(uniqueIDArr)
               uniqueIDArr.map((ele)=>{
-                  fetch (`https://enormous-childlike-gorgonzola.glitch.me/cart/${ele.id}`,{
+                  fetch (`https://cheddar-pentagonal-torta.glitch.me/cart/${ele.id}`,{
                   method : "DELETE",
               })
               })

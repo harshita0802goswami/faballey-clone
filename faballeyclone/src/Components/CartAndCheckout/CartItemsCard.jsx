@@ -20,7 +20,7 @@ const CartItemsCard = ({ Cartdata = [], DeleteFunction, isUpdate }) => {
   
   let [quantity, setQuantity] = useState(Cartdata.qty);
   function SendQtyToServer(id, quantity) {
-    fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart/${id}`, {
+    fetch(`https://cheddar-pentagonal-torta.glitch.me/cart/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ qty: quantity }),
@@ -90,7 +90,7 @@ function ColorString(){
         <div className={styles.ProductDetailsMainDiv}>
           <div className={styles.UpperProductDetailsDiv}>
             <div className={styles.UpperLeftProductDetailsDiv}>
-            <Link to={`/products/${Cartdata.id}`}>{Cartdata.title}</Link>
+            <Link to={`/products/${Cartdata.uniqueId}`}>{Cartdata.title}</Link>
               <div className={styles.QtySizeColorDetailsDiv}>
                 <p>Size: {RandomSize}</p>
                 <p>Qty: {quantity}</p>

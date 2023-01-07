@@ -1,6 +1,7 @@
 .img-container > div > img {
-  width: 400px;
-  height: 500px;
+  /* width: 400px; */
+  width: 100%;
+  /* height: 500px; */
 }
 .img-container > div {
   display: grid;
