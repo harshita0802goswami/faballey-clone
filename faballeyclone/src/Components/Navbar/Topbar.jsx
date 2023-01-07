@@ -1,5 +1,7 @@
 import React from 'react'
 import './Navbar.css'
+import {BsHandbag} from 'react-icons/bs'
+import {Link} from 'react-router-dom'
 
 const Topbar = () => {
   return (
@@ -15,7 +17,7 @@ const Topbar = () => {
                 <li>Store Locator</li>
                 <li>Login</li>
                 <li>Sign up</li>
-                <li>👜</li>
+                <li><Link to={'/cart'}><BsHandbag/></Link></li>
             </ul>
         </div>
     </div>

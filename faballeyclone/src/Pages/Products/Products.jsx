@@ -62,11 +62,12 @@ const changeByClick=(value)=>{
   }
 
   console.log(totalProducts+"total poducts");
+
   const postData =async(propdata)=>{
     let newData={...propdata};
     delete newData.id;
     newData.qty=1;
-    let res =await fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart`,{
+    let res =await fetch(`https://cheddar-pentagonal-torta.glitch.me/cart`,{
       method:"POST",
       body:JSON.stringify(newData),
       headers:{
@@ -74,7 +75,7 @@ const changeByClick=(value)=>{
       }
     })
     let data = await res.json();
-    console.log(data);
+    console.log(data,'posted');
     setSuccess(true);
     setTimeout(() => {
       
@@ -88,7 +89,7 @@ const changeByClick=(value)=>{
   const addToCart=async(e,propdata)=>{
     e.preventDefault();
     
-    let res=await fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart?uniqueId=${propdata.uniqueId}`)
+    let res=await fetch(`https://cheddar-pentagonal-torta.glitch.me/cart?uniqueId=${propdata.uniqueId}`)
     let data = await res.json()
     console.log(data);
     if(data.length>0){
@@ -102,8 +103,6 @@ const changeByClick=(value)=>{
     }
     else{
       postData(propdata);
-      
-
     }
   }
   console.log(showAlert);

@@ -33,7 +33,7 @@ function Cart() {
   }, [Deleted]);
 
   function getData() {
-    fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart`)
+    fetch(`https://cheddar-pentagonal-torta.glitch.me/cart`)
       .then((res) => res.json())
       .then((val) => {
         setIsLoading(false);
@@ -46,7 +46,7 @@ function Cart() {
       }).catch(error=>console.log(error));
   }
   function DeleteCartItem(id) {
-    fetch(`https://enormous-childlike-gorgonzola.glitch.me/cart/${id}`, {
+    fetch(`https://cheddar-pentagonal-torta.glitch.me/cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => {
