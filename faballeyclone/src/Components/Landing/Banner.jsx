@@ -22,9 +22,9 @@ const Banner = () => {
         }
     }
 
-    // setInterval(()=>{   
-    //     handleNext();
-    // }, 4000)
+    setInterval(()=>{   
+        handleNext();
+    }, 4000)
 
   return (
     <div className='Banner-carousel'>

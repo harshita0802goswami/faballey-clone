@@ -26,6 +26,10 @@ const AllRoutes = () => {
         <Route path='/products/:id' element={<WrapperRoute><SingleProduct/></WrapperRoute>}/>
         <Route path='/cart' element={<Cart/>} />
         <Route path='/checkout' element={<Checkout/>} />
+        <Route path= '/payment' element={<Payment/>}/>
+        <Route path= '/paymentprocessing' element={<PaymentProcessing/>}/>
+        <Route path= '/paymentgateway' element={<PaymentGateway/>}/>
+        <Route path= '/orderconfirmation' element={<OrderConfirmation/>}/>
         <Route path='/redirect' element={<Redirect/>} />
       </Routes>   
     </div>

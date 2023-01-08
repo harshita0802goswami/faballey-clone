@@ -9,7 +9,7 @@ import InstaShop from "../../Components/Landing/InstaShop";
 
 const Home = ()=>{
     return (
-        <div style={{zIndex:'1'}}>
+        <div style={{zIndex:'1',marginBottom:'3%'}}>
             
             <Banner />
             <Trending />

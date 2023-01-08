@@ -12,7 +12,7 @@
 }
 .topBar ul > li{
     list-style: none;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     padding: 0 5px;
     border-right: 1px solid black;
@@ -24,15 +24,15 @@
 }
 
 .midBar{
+    width: 100%;
+    box-sizing: border-box;
     margin-top: 35px;
     display: flex;
     justify-content: space-between;
     padding: 15px 15px 10px;
     align-items: baseline;
 }
-.midBar > div > img{
-    width: 150px;
-}
+
 
 .navList{
     display: flex;
@@ -41,7 +41,7 @@
 }
 .navList > li{
     list-style-type: none;
-    font-size: 10.5px;
+    font-size: 12px;
     padding: 0px 8px 5px;
     font-weight: 600;
     border-bottom: 4px solid white;
@@ -64,7 +64,7 @@
     top: 56px;
     background-color: #fff;
     box-shadow: 0 0 1px grey;
-    width: 100vw;
+    width: 100%;
     visibility: hidden;
 }
 

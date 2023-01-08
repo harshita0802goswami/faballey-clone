@@ -1,11 +1,13 @@
 import React from 'react'
 import './Navbar.css'
 import MidbarList from './MidbarList'
+import { GrLinkTop } from 'react-icons/gr'
+import { Link } from 'react-router-dom'
 
 const Midbar = ({filters,changeFilters}) => {
   return (
     <div className='midBar'>
-        <div><img src="https://static.faballey.com/images/logo.png?v=11.38" alt="" /></div>
+        <div><Link to={'/'}><img style={{width:"150px"}} src="https://static.faballey.com/images/logo.png?v=11.38" alt="" /></Link></div>
         <div>
           <MidbarList filters={filters} changeFilters={changeFilters} />
         </div>
