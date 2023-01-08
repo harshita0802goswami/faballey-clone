@@ -10,6 +10,9 @@
     z-index: 100;
     background-color: #fff;
 }
+.topBar div:nth-child(2){
+    justify-content: center;
+}
 .topBar ul > li{
     list-style: none;
     font-size: 12px;
@@ -67,7 +70,9 @@
     width: 100%;
     visibility: hidden;
 }
-
+.hamburgerMenu{
+    display: none;
+}
 .midBarCard > div{
     width: 60%;
     margin: auto;
@@ -96,4 +101,33 @@
 
 .navList > li:hover .midBarCard{
     visibility: visible;
+}
+@media only screen and (max-width: 1160px){
+    .hideLists{
+        display: none;
+    }
+}
+@media only screen and (max-width: 900px){
+    .topBar > div:first-child{
+        display: none;
+    }
+    .topBar{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .topBar div:nth-child(2){
+        display: flex;
+        justify-content: left;
+        /* border: 1px solid red; */
+    }
+
+    .midBar > div img{
+        display: none;
+    }
+    .midBar > div:nth-child(2){
+        display: none;
+    }
+    .hamburgerMenu{
+        display: block;
+    }
+
 }
