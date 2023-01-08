@@ -28,12 +28,13 @@
 
 .pre-btn p,.next-btn p{
     background-color: #fff;
-    padding: 4px 13px 6px;
+    padding: 6px 8px;
     margin: 0 20px;
     font-weight: bolder;
     border-radius: 10px;
     font-size: 20px;
-    border: 2px solid skyblue;
+    border: 2px solid rgb(208,208,208) ;
+    
 }
 
 

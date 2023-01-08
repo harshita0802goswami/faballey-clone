@@ -1,5 +1,6 @@
 import React from 'react'
 import './Landing.css'
+import {GrFormNext,GrFormPrevious} from 'react-icons/gr'
 
 const Banner = () => {
     var box = document.querySelector('.carousel-images');
@@ -28,8 +29,8 @@ const Banner = () => {
 
   return (
     <div className='Banner-carousel'>
-        <button className='pre-btn' onClick={handlePrev}><p>&lt;</p></button>
-        <button className='next-btn' onClick={handleNext}><p>&gt;</p></button>
+        <button className='pre-btn' onClick={handlePrev}><p><GrFormPrevious size={'1.8rem'}/></p></button>
+        <button className='next-btn' onClick={handleNext}><p><GrFormNext size={'1.8rem'}/></p></button>
         <div className='carousel-images' id='images'>
             <img src="https://img.faballey.com/images/banner/543a4493-4276-40b9-a44b-9d540da245a9.jpg" alt="" />
             <img src="https://img.faballey.com/images/banner/e5370aac-0b7c-4c78-98f2-6cbde74bc6fe.jpg" alt="" />
