@@ -65,28 +65,6 @@ const SingleProduct = () => {
     setCheckActiveState({ ...productSizes, activeClass: id });
   };
 
-  // const addToCart = () => {
-  //   if (!prodSize) {
-  //     alert("Select size first");
-  //   }
-  //   try {
-  //     fetch(`https://cheddar-pentagonal-torta.glitch.me/cart`, {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify({...product,qty:1}),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         alert("Product added to Cart");
-  //       });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const addToCart=async()=>{
     let res=await fetch(`https://cheddar-pentagonal-torta.glitch.me/cart?uniqueId=${product.uniqueId}`)
     let data = await res.json()
@@ -128,7 +106,7 @@ const SingleProduct = () => {
 }
   return (
     
-      <div style={{ width: "90%", margin: "20px auto" }}>
+      <div style={{ width: "90%", margin: "20px auto",marginBottom:'3%' }}>
         
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div

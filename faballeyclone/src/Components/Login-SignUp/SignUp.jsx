@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 
 import Action from "../../Redux/Action";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function MySignUp() {
 
@@ -92,7 +93,7 @@ function MySignUp() {
 
     }
     return (
-        <Box textAlign={"center"} mb={'8%'} mt={'6%'}>
+        <Box textAlign={"center"} mb={'8%'} mt={'2%'}>
             <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
                 <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
                 <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> REGISTER HERE </Text>
@@ -128,13 +129,13 @@ function MySignUp() {
                 </Box>
 
                 <Box>
-                    <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} >Already Registered? Login</Text>
+                    <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} ><Link to={'/'}>Already Registered? Login</Link></Text>
                 </Box>
 
 
 
                 <Text opacity={"0.6"}
-                    cursor={"pointer"} fontWeight={"semibold"} mt={"30px"} fontSize={"13px"} onClick={closeDiv} ref={divRef} >Skip</Text>
+                    cursor={"pointer"} fontWeight={"semibold"} mt={"30px"} fontSize={"13px"} onClick={closeDiv} ref={divRef} ><Link to={'/'}>Skip</Link></Text>
 
 
             </Box>

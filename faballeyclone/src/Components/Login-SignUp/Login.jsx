@@ -4,37 +4,25 @@ import {
   Input,
   Divider,
   Button,
-  Text, Box, Flex, Image,  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
+  Text, Box, Flex, Image
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons"
 import { Icon } from '@chakra-ui/react'
 import google from "./LoginImages/Login_Image1.png"
 import facebook from "./LoginImages/Login_Image2.png"
 import { useRef, useState } from "react";
-
-
 import { GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 import { webAuth } from "./AuthFireBase";
-
-
-
-
 import { useMediaQuery } from '@chakra-ui/react'
-
-
-
-
 import { useSelector } from "react-redux";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 
 
 function MyLogin() {
 
 
-
+const navigate  = useNavigate();
   //GOOGLE AUTH
 
   const GoogleAuth = ()=>{
@@ -47,8 +35,7 @@ function MyLogin() {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    alert("LOGIN SUCESSFULL")
-    
+    navigate('/')
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -102,7 +89,8 @@ function MyLogin() {
       storeData.map((elem) => {
 
         if (elem.email === loginData.email && elem.password === loginData.password) {
-          alert("LOGIN SUCCESSFUL");
+          // alert("LOGIN SUCCESSFUL");
+         <Navigate to={'/'}/>
           // console.log(localStorage.getItem("userName"));
           isFind = false;
           return;
@@ -128,10 +116,10 @@ function MyLogin() {
   const inputRef = useRef()
   const inputRef1 = useRef()
 
-  const closeDiv = () => {
-    divRef.current.style.display = divRef.current.style.display === 'none' ? 'block' : 'none';
-    // ADD NAVIGATE TO HOME PAGE HERE  
-  }
+  // const closeDiv = () => {
+  //   divRef.current.style.display = divRef.current.style.display === 'none' ? 'block' : 'none';
+  //   // ADD NAVIGATE TO HOME PAGE HERE  
+  // }
 
   const handleInputClick = () => {
     inputRef.current.style.borderBottom = '2px solid black';
@@ -141,10 +129,10 @@ function MyLogin() {
   };
   return (
     // <Box margin={'auto'}  textAlign={"center"} position="absolute" zIndex={'20'} backdropFilter="blur(5px)" width={'100%'}>
-      <Box textAlign={'center'} ref={divRef} margin={'auto'} mt={'5%'} mb={'8%'} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} >
-        <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
+      <Box textAlign={'center'} ref={divRef} margin={'auto'} mt={'1%'} mb={'8%'} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} >
+        <Link to={'/'}><Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"}/></Link> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
-        <Text ml={"5%"} paddingBottom={"19px"} textAlign={"left"} fontFamily={"Lato"} fontSize={"14px"} fontWeight={"bold"}> for a quicker checkout</Text>
+        {/* <Text ml={"5%"} paddingBottom={"19px"} textAlign={"left"} fontFamily={"Lato"} fontSize={"14px"} fontWeight={"bold"}> for a quicker checkout</Text> */}
 
         <FormControl isRequired >
           <FormLabel ml={"5%"}>Email</FormLabel>
@@ -171,13 +159,13 @@ function MyLogin() {
         </Box>
 
         <Box>
-          <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} >New here?   SignUp</Text>
+          <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} ><Link to={'/signup'}>New here?   SignUp</Link></Text>
         </Box>
 
 
 
         <Text opacity={"0.6"}
-          cursor={"pointer"} fontWeight={"semibold"} mt={"30px"} fontSize={"13px"} onClick={closeDiv} ref={divRef} >Skip</Text>
+          cursor={"pointer"} fontWeight={"semibold"} mt={"30px"} fontSize={"13px"} ref={divRef} ><Link to={'/'}>Skip</Link> </Text>
 
 
       </Box>

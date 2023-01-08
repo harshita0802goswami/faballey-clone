@@ -70,7 +70,7 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
       </Box> <br />
 
       <Box padding={"8px"} boxShadow='xs' display={"flex"} w={"75%"} margin={"auto"} justifyContent={"space-between"}>
-        <Image w={"75%"} height={"120"} src={source1} alt="image1"></Image>
+        <Image w={"75%"} height={"110"} src={source1} alt="image1"></Image>
         <Box display={"flex"} flexDirection={"column"} rowGap={"10px"} width={'100%'}>
           <Text color={"black"} fontWeight={'semibold'} fontSize={"19px"}>DOWNLOAD THE APP</Text>
           <Box display={"flex"} justifyContent={"space-around"}>
