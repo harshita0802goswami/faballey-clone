@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import {BsHandbag} from 'react-icons/bs'
 import {Link} from 'react-router-dom'
+import MyLogin from '../Login-SignUp/Login'
+import MySignUp from '../Login-SignUp/SignUp'
+
 
 const Topbar = () => {
-  return (
+  const [showLogin,setShowLogin] = useState(false);
+  const [showSignUp,setShowSignUp] = useState(false);
+  return (<div>
     <div className='topBar' >
         <div></div>
         <div style={{display:'flex', justifyContent:'center'}}>
@@ -15,11 +20,14 @@ const Topbar = () => {
             <ul style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
                 <li>Track Order</li>
                 <li>Store Locator</li>
-                <li>Login</li>
-                <li>Sign up</li>
+                <li onClick={()=>setShowLogin(true)}>Login</li>
+                <li onClick={()=>setShowSignUp(true)}>Sign up</li>
                 <li><Link to={'/cart'}><BsHandbag/></Link></li>
             </ul>
         </div>
+    </div>
+    {showLogin?<MyLogin/>:""}
+    {showSignUp?<MySignUp/>:''}
     </div>
   )
 }

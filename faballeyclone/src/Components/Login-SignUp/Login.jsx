@@ -140,8 +140,7 @@ function MyLogin() {
     inputRef1.current.style.borderBottom = '2px solid black';
   };
   return (
-
-    <Box mt={'6%'} textAlign={"center"} >
+    <Box margin={'auto'} mt={'6%'} textAlign={"center"} position="absolute" zIndex={'20'} backdropFilter="blur(5px)" width={'100%'}>
       <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
         <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
@@ -183,8 +182,7 @@ function MyLogin() {
 
       </Box>
 
-    </Box>
-
+    </Box>  
   );
 }
 export default MyLogin
