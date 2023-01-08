@@ -140,8 +140,8 @@ function MyLogin() {
     inputRef1.current.style.borderBottom = '2px solid black';
   };
   return (
-    <Box margin={'auto'} mt={'6%'} textAlign={"center"} position="absolute" zIndex={'20'} backdropFilter="blur(5px)" width={'100%'}>
-      <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
+    // <Box margin={'auto'}  textAlign={"center"} position="absolute" zIndex={'20'} backdropFilter="blur(5px)" width={'100%'}>
+      <Box textAlign={'center'} ref={divRef} margin={'auto'} mt={'5%'} mb={'8%'} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} >
         <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
         <Text ml={"5%"} paddingBottom={"19px"} textAlign={"left"} fontFamily={"Lato"} fontSize={"14px"} fontWeight={"bold"}> for a quicker checkout</Text>
@@ -182,7 +182,7 @@ function MyLogin() {
 
       </Box>
 
-    </Box>  
+    // </Box>  
   );
 }
 export default MyLogin

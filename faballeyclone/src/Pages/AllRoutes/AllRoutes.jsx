@@ -12,6 +12,7 @@ import PaymentProcessing from '../Cart/PaymentProcessing'
 import Redirect from '../Cart/Redirect'
 import Home from '../Home/Home'
 import { Products } from '../Products/Products'
+import WrapperLogin from '../WrapperRoute/WrapperLogin'
 import WrapperRoute from '../WrapperRoute/WrapperRoute'
 
 const AllRoutes = () => {
@@ -19,8 +20,8 @@ const AllRoutes = () => {
     <div>
      <Routes>
         <Route path='/' element={<WrapperRoute><Home/></WrapperRoute>}/>
-        <Route path='/login' element={<MyLogin/>}/>
-        <Route path='/signup' element={<MySignUp/>}/>
+        <Route path='/login' element={<WrapperLogin><MyLogin/></WrapperLogin>}/>
+        <Route path='/signup' element={<WrapperLogin><MySignUp/></WrapperLogin>}/>
         <Route path='/products' element={<WrapperRoute><Products/></WrapperRoute>}/>
         <Route path='/products/:id' element={<WrapperRoute><SingleProduct/></WrapperRoute>}/>
         <Route path='/cart' element={<Cart/>} />

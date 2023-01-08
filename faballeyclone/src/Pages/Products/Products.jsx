@@ -110,7 +110,7 @@ const changeByClick=(value)=>{
     fetchData();
   },[filters,sort,currentPage])
   return (
-    <Box width={"80%"}  m={'auto '} display={'flex'} justifyContent={'space-between'} gap={'15px'} >
+    <Box m={'auto '} marginTop={'30px'} width={"80%"}   display={'flex'} justifyContent={'space-between'} gap={'15px'} >
         <CategoryList changeFilter={changeFilter}/>
         <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort} totalProducts={totalProducts} filters={filters} currentPage={currentPage} changeByClick = {changeByClick} setCurrentPage={changePages}/>
         
