@@ -1,11 +1,14 @@
 import React from 'react'
 import './Navbar.css'
+import MidbarList from './MidbarList'
 
 const Midbar = () => {
   return (
     <div className='midBar'>
         <div><img src="https://static.faballey.com/images/logo.png?v=11.38" alt="" /></div>
-        <div></div>
+        <div>
+          <MidbarList />
+        </div>
         <div style={{display:'flex'}}>
             <p>🔍</p>
             <select name="" id="corancy" style={{border:'.5px solid grey', fontSize:'12px', fontWeight:'600',marginLeft:'10px'}}>

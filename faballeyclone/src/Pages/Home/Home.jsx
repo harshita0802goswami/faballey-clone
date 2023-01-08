@@ -9,8 +9,8 @@ import InstaShop from "../../Components/Landing/InstaShop";
 
 const Home = ()=>{
     return (
-        <div>
-            <Navbar />
+        <div style={{zIndex:'1'}}>
+            
             <Banner />
             <Trending />
             <SingleImg title='HOT RIGHT NOW' url='https://img.faballey.com/images/banner/13261f57-0431-4ccc-965c-6eeb9aaf64fd.jpg'/>

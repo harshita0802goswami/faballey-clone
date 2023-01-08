@@ -27,9 +27,73 @@
     margin-top: 35px;
     display: flex;
     justify-content: space-between;
-    padding: 15px 15px 25px;
+    padding: 15px 15px 10px;
     align-items: baseline;
 }
 .midBar > div > img{
     width: 150px;
+}
+
+.navList{
+    display: flex;
+    transition: all;
+
+}
+.navList > li{
+    list-style-type: none;
+    font-size: 10.5px;
+    padding: 0px 8px 5px;
+    font-weight: 600;
+    border-bottom: 4px solid white;
+    
+}
+.navList > li:last-child{
+    color: #fc6486;
+}
+.navList > li:hover{
+    border-bottom: 4px solid #fc6486;
+    transition-timing-function: ease-in-out;
+    text-decoration: 5s;
+}
+
+.midBarCard{
+    position: absolute;
+    z-index: 10;
+    /* left: -270px; */
+    left: 0;
+    top: 56px;
+    background-color: #fff;
+    box-shadow: 0 0 1px grey;
+    width: 100vw;
+    visibility: hidden;
+}
+
+.midBarCard > div{
+    width: 60%;
+    margin: auto;
+    padding-right: 80px;
+    display: flex;
+    min-width: 500px;
+    justify-content: space-between;
+}
+.midBarCard > div > div{
+    padding: 40px 20px;
+}
+.midBarCard > div li{
+    padding-bottom: 15px;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+.midBarCard > div h1{
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.midBarCard img{
+    width: 330px;
+    max-height: 350px;
+}
+
+.navList > li:hover .midBarCard{
+    visibility: visible;
 }
