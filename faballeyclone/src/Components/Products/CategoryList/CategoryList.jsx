@@ -31,8 +31,8 @@ export const CategoryList = ({changeFilter}) => {
     
   ]
   return (
-    <div style={{width:'21%'}}>
-      <Accordion defaultIndex={[0]} allowMultiple>
+    <div style={{marginTop:'0%',width:'21%'}}>
+      <Accordion defaultIndex={[1]} allowMultiple>
       <AccordionItem>
       <h2>
         <AccordionButton borderTop={'1.5px solid gray'} >

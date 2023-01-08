@@ -18,7 +18,7 @@ import Pagination from '../Pagination/Pagination';
 
 export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalProducts,filters,currentPage,changeByClick,setCurrentPage}) => {
   let renderingData =[0,0,0,0,0,0,0,0,0,0,0,0];
-  return (<div style={{width:"79%" ,padding:"4px 20px"}}>
+  return (<div style={{width:"79%",padding:"0px 20px"}}>
     <Box  className='productListTitle' h={'30px'}  paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'} borderTop='1px solid gray' borderBottom={'1px solid gray'} mb='20px'>
     <Box display="flex" alignItems={'center'}  height={'20px'}>
       <Box paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>{filters.category!=""?filters.category.toUpperCase():'ALL'}</h6></Box>
@@ -31,7 +31,7 @@ export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalP
   <MenuButton  rightIcon={<ChevronDownIcon />}>
     SORT BY PRICE:{sort==''?"RELEVENCE":sort=='asc'?'ASCENDING':"DESCENDING"}  
   </MenuButton>
-  <MenuList minWidth='195px' border={'2px solid gray'}>
+  <MenuList minWidth='195px'>
     <MenuOptionGroup  defaultValue='' type='radio'>
       <MenuItemOption onClick={(e)=>changeSort('')} value=''>RELEVENCE</MenuItemOption>
       <MenuItemOption onClick={(e)=>changeSort('asc')} value='asc'>ASCENDING</MenuItemOption>
@@ -51,7 +51,7 @@ export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalP
         })
       }
     </Box>:
-    <Box display={"grid"} gridTemplateColumns={"repeat(3,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"}>
+    <Box display={"grid"} gridTemplateColumns={"repeat(3,1fr)"} gridRowGap={"15px"} gridColumnGap={"15px"} padding="0px 10px">
       {
         products.map((elem)=>{
           return <ProductCard data={elem} addToCart={addToCart} isLoading={isLoading}/>

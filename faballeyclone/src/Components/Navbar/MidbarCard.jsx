@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MidbarCard = ({list=[], list2=[], img, h1, h2}) => {
   return (
@@ -7,7 +8,7 @@ const MidbarCard = ({list=[], list2=[], img, h1, h2}) => {
         <div>
             <h1>{h1}</h1>
             {list.map((elem)=>{
-                return <li>{elem}</li>
+                return <li><Link to={'/products'}>{elem}</Link></li>
             })}
         </div>
         <div>

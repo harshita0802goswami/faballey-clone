@@ -2,12 +2,12 @@ import React from 'react'
 import './Navbar.css'
 import MidbarList from './MidbarList'
 
-const Midbar = () => {
+const Midbar = ({filters,changeFilters}) => {
   return (
     <div className='midBar'>
         <div><img src="https://static.faballey.com/images/logo.png?v=11.38" alt="" /></div>
         <div>
-          <MidbarList />
+          <MidbarList filters={filters} changeFilters={changeFilters} />
         </div>
         <div style={{display:'flex'}}>
             <p>🔍</p>

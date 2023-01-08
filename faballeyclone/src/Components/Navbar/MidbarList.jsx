@@ -21,7 +21,7 @@ const MidbarList = () => {
             <li>WINTERWEAR </li>
             <li>CLOTHING 
               <MidbarCard 
-               list={['Dresses', 'Co-ords','Skirts','Bottoms','Basics','Classics','Workwear','Loungewear','Winterwear']}
+               list={['All styles','Dresses', 'Co-ords','Skirts','Bottoms','Basics','Classics','Workwear','Loungewear','Winterwear']}
                list2={['Party', 'Vacation','Work','Loungewear']}
                h2='SHOP BY OCCASION'
                img='https://img.faballey.com/images/menu/fapartywear.jpg'
