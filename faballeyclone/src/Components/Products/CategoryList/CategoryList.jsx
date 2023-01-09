@@ -11,7 +11,7 @@ export const CategoryList = ({changeFilter}) => {
     {
       title:'Color',
       key:'color',
-      data:['blue','black','yellow','green','pink','purple','navy']
+      data:['pink','blue','black','yellow','green','purple','navy']
     },
     {
       title:'Sleeves',

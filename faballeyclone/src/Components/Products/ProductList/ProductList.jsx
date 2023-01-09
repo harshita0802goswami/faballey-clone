@@ -29,13 +29,13 @@ export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalP
       <Box width={'190px'}  display="flex" alignItems={'center'} height={'20px'}>
         <Menu>
   <MenuButton  rightIcon={<ChevronDownIcon />}>
-    SORT BY PRICE:{sort==''?"RELEVENCE":sort=='asc'?'ASCENDING':"DESCENDING"}  
+    SORT BY PRICE:{sort==''?"RELEVENCE":sort=='asc'?'LOW TO HIGH':"HIGH TO LOW"}  
   </MenuButton>
   <MenuList minWidth='195px'>
     <MenuOptionGroup  defaultValue='' type='radio'>
       <MenuItemOption onClick={(e)=>changeSort('')} value=''>RELEVENCE</MenuItemOption>
-      <MenuItemOption onClick={(e)=>changeSort('asc')} value='asc'>ASCENDING</MenuItemOption>
-      <MenuItemOption onClick={(e)=>changeSort('desc')} value='desc'>DESCENDING</MenuItemOption>
+      <MenuItemOption onClick={(e)=>changeSort('asc')} value='asc'>LOW TO HIGH</MenuItemOption>
+      <MenuItemOption onClick={(e)=>changeSort('desc')} value='desc'>HIGH TO LOW</MenuItemOption>
     </MenuOptionGroup>
   </MenuList>
   
