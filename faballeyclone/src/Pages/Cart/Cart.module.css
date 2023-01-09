@@ -78,7 +78,7 @@
 }
 .CartUserName{
     /* border: 1px solid red; */
-    width: 10%;
+    width: 14%;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -88,8 +88,9 @@
     overflow: hidden;
 }
 .CartUserName>p{
+    margin: 0;
     margin-left: 5px;
-    width: 90px;
+    /* width: 90px; */
     overflow: hidden;
 }
 .UserIcon{
