@@ -6,7 +6,7 @@ function OrderConfirmation() {
     let [dot, setDot] = useState("")
     useEffect(()=>{
         setTimeout(()=>{
-            navigatetoPaymentGateWay('/')
+            navigatetoPaymentGateWay('/cart')
         },5000)
 
     },[])

@@ -13,7 +13,7 @@ function CartNavbar(props) {
   let [username, setUsername] = useState('');
 
   useEffect(()=>{
-    let name = localStorage.getItem("userName") || 'guest';
+    let name = localStorage.getItem("userName") || 'Guest';
     setUsername(name);
   },[username])
 
