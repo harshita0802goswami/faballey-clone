@@ -14,7 +14,7 @@ import {
   TableContainer,
   Input,
   Button,
-  Divider, Center
+  Divider, Center, Flex
 } from '@chakra-ui/react'
 import { useMediaQuery } from '@chakra-ui/react';
 
@@ -49,8 +49,9 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
   };
   return (
     <Box backgroundColor={"#fbfbfb"}>
-      <Box padding={"8px"} boxShadow='xs' p='6' textAlign={'left'} ref={containerRef} w='76%' margin={"auto"} overflowY={"auto"} maxHeight={"400px"} font-family={"Poppins, sans-serif"} backgroundColor={"#fbfbfb"}>
-        <Text top={'0px'} color={"black"} fontWeight={'semibold'} w={"72.5%"} backgroundColor={"white"} position={"fixed"} fontSize={"16px"} as='abbr'>ONLINE SHOPPING SITE FOR WOMEN’S FASHION - FABALLEY</Text>
+      <Box padding={"8px"} boxShadow='xs' p='6' textAlign={'left'} ref={containerRef} w='76%' margin={"auto"} overflowY={"auto"} maxHeight={"400px"} font-family={"Poppins, sans-serif"} backgroundColor={"#fbfbfb"}> 
+        <Text top={'0px'} color={"black"} fontWeight={'semibold'} w={"72.5%"} backgroundColor={"white"}  fontSize={"16px"} as='abbr'>ONLINE SHOPPING SITE FOR WOMEN’S FASHION - FABALLEY</Text> 
+
         <Text fontSize={"13px"}>FabAlley.com is an online fashion store for taste-makers and trend-breakers all over the country. When it comes to online shopping for women looking for the latest fashion trends, FabAlley is the one-stop destination. Started in 2012, this online fashion store comprises of the trendiest tops, hottest dresses, skirts, jackets, shoes, bags, accessories and fashion jewellery for women online shopping. Every new season brings fresh and latest fashion for women. And it becomes important for you to keep up with the current trend. However, FabAlley has all your styling stress sussed!</Text><br />
         <Text fontSize={"13px"}>Going out for a stroll along the streets? Or getting ready for an important meeting at work? Or simply watching Netflix at home, cuddled up with your loved one in bed? Whatever plans you have, one common decision you should take in all these cases is what to wear. Women are generally very particular about their outfits and latest fashion trends. FabAlley, an online fashion store, houses a colossal collection of Tops, Dresses, Skirts, Bottoms, Shorts, Blazers and Jackets, all bang-on trend and in all sizes, from petite to plus-size.</Text><br />
         <Text fontSize={"13px"}>Going to a brick and mortar store and browsing your perfect outfit is very tedious and time consuming. It is physically impossible to check out all the latest fashion trends for women from various brands in the same day. In the fast-moving world, today, no one has this much time! This is one of the main reasons that Online Shopping for women is so popular these days. It’s much convenient, time-saving and offers a wider variety of surf too. It also lets you compare prices across different websites. From Instagram and Facebook to googling and scanning through several online fashion store India, the options for browsing are endless. FabAlley is one such online fashion store that is a one- stop shop for all your fashion needs, be it ethnic or western wear, bags or shoes. The best part being we provide the latest women online shopping trends.</Text><br />
@@ -70,11 +71,11 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
       </Box> <br />
 
       <Box padding={"8px"} boxShadow='xs' display={"flex"} w={"75%"} margin={"auto"} justifyContent={"space-between"}>
-        <Image w={"75%"} height={"110"} src={source1} alt="image1"></Image>
-        <Box display={"flex"} flexDirection={"column"} rowGap={"10px"} width={'100%'}>
+        <Image w={isLargerThan500 ? "100%" : "75%"} height={"120"} src={source1} alt="image1"></Image>
+        <Box display={isLargerThan500 ? "none" : "flex"} flexDirection={"column"} rowGap={"10px"} width={'100%'}>
           <Text color={"black"} fontWeight={'semibold'} fontSize={"19px"}>DOWNLOAD THE APP</Text>
-          <Box display={"flex"} justifyContent={"space-around"}>
-            <Image height={"45px"} width={"40%"} src={source2}></Image>
+          <Box display={isLargerThan500 ? "none" : "flex"} justifyContent={"space-around"}>
+            <Image  height={"45px"} width={"40%"} src={source2}></Image>
             <Image height={"45px"} width={"40%"} src={source3}></Image>
           </Box>
         </Box>
@@ -86,14 +87,14 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
           <Table variant='simple' size='sm'>
             <Thead>
               <Tr border={"none"}>
-                <Th color={"black"} fontWeight={'semibold'} fontSize={"16px"}>COMPANY</Th>
+                <Th color={"black"} fontWeight={'semibold'} fontSize={isLargerThan500 ? "13px" :"16px"}>COMPANY</Th>
                 <Th></Th>
-                <Th color={"black"} fontWeight={'semibold'} fontSize={"16px"}>HELP</Th>
+                <Th color={"black"} fontWeight={'semibold'} fontSize={isLargerThan500 ? "13px" :"16px"}>HELP</Th>
 
               </Tr>
             </Thead>
             <Tbody>
-              <Tr  >
+              <Tr fontSize={isLargerThan500 ? "2px" :"13px"}  >
                 <Td>About Us</Td>
                 <Td>Order Status</Td>
                 <Td >FAQs</Td>
@@ -129,7 +130,7 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
 
 
         <Box w={isLargerThan500 ? "100%" : "40%"} >
-          <Text  color={"black"} fontWeight={'semibold'} fontSize={"16px"} >NEWSLETTER SIGNUP</Text><br />
+          <Text  color={"black"} fontWeight={'semibold'}fontSize={isLargerThan500 ? "13px" :"16px"} >NEWSLETTER SIGNUP</Text><br />
           <Box >
             <FormControl justifyContent={"space-evenly"} display={"flex"} margin={"auto"} w={"100%"} >
               <Input w={'60%'} placeholder='Enter Email Adress' type='email' />
@@ -137,37 +138,37 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
             </FormControl>
           </Box> <br />
           <Box>
-            <Text color={"black"} fontWeight={'semibold'} fontSize={"16px"} >CONNECT WITH US</Text>
+            <Text color={"black"} fontWeight={'semibold'} fontSize={isLargerThan500 ? "13px" :"16px"} >CONNECT WITH US</Text>
             <Image cursor={"pointer"} w={"52%"} margin={"auto"} src={source4}></Image>
           </Box>
         </Box>
       </Box> <br />
 
       <Box w={"75%"} margin={"auto"}  >
-        <Text textAlign={"left"} color={"black"} fontWeight={'semibold'} fontSize={"16px"}>IN CASE OF ANY CONCERN, CONTACT US</Text> <br />
+        <Text textAlign={"left"} color={"black"} fontWeight={'semibold'} fontSize={isLargerThan500 ? "13px" :"16px"}>IN CASE OF ANY CONCERN, CONTACT US</Text> <br />
 
         <Box w={"100%"} display={"flex"}>
           <Box display={"flex"} flexDirection={"row"} w={"100%"} justifyContent={"space-between"} >
             <Box textAlign={"left"} display={"grid"} gap={"10px"} >
-              <Text textAlign={"left"} color={"black"} fontWeight={'semibold'} mb={"15px"} fontSize={"16px"}>HEAD OFFICE ADDRESS:</Text>
-              <Text fontSize={"16px"}>High Street Essentials Pvt Ltd</Text>
-              <Text fontSize={"16px"}>C-11, Sector 7, Noida, UP- 201301, India</Text>
-              <Text fontSize={"16px"}>Customer Care:  +91-8929987349 / 0120-6850262</Text>
+              <Text textAlign={"left"} color={"black"} fontWeight={'semibold'} mb={"15px"} fontSize={isLargerThan500 ? "13px" :"16px"}>HEAD OFFICE ADDRESS:</Text>
+              <Text fontSize={isLargerThan500 ? "13px" :"16px"}>High Street Essentials Pvt Ltd</Text>
+              <Text fontSize={isLargerThan500 ? "13px" :"16px"}>C-11, Sector 7, Noida, UP- 201301, India</Text>
+              <Text fontSize={isLargerThan500 ? "13px" :"16px"}>Customer Care:  +91-8929987349 / 0120-6850262</Text>
             </Box>
             <Center height='160px' >
               <Divider orientation='vertical' />
             </Center>
             <Box textAlign={"left"} display={"grid"} gap={"10px"}>
-              <Text textAlign={"left"} color={"black"} fontWeight={'semibold'} mb={"15px"} fontSize={"16px"}>RETURN ADDRESS:</Text>
-              <Text fontSize={"16px"}>High Street Essentials Pvt Ltd</Text>
-              <Text fontSize={"16px"}>Greater Noida(West), Gautam Buddha</Text>
-              <Text fontSize={"16px"}>Nagar, UP - 201306, India</Text>
+              <Text textAlign={"left"} color={"black"} fontWeight={'semibold'} mb={"15px"} fontSize={isLargerThan500 ? "13px" :"16px"}>RETURN ADDRESS:</Text>
+              <Text fontSize={isLargerThan500 ? "13px" :"16px"}>High Street Essentials Pvt Ltd</Text>
+              <Text fontSize={isLargerThan500 ? "13px" :"16px"}>Greater Noida(West), Gautam Buddha</Text>
+              <Text fontSize={isLargerThan500 ? "13px" :"16px"}>Nagar, UP - 201306, India</Text>
             </Box>
             <Center height='160px' >
               <Divider orientation='vertical' />
             </Center>
             <Box display={"grid"}>
-              <Text color={"black"} fontWeight={'semibold'} fontSize={"16px"} mb={"10px"} >PAYMENT METHODS</Text>
+              <Text color={"black"} fontWeight={'semibold'} fontSize={isLargerThan500 ? "13px" :"16px"} mb={"10px"} >PAYMENT METHODS</Text>
               <Image src={source5} alt={"paymnt"}></Image>
             </Box>
           </Box>
@@ -177,8 +178,8 @@ const [isLargerThan500] = useMediaQuery('(max-width: 500px)')
         <Divider orientation='horizontal' />
       </Center> <br />
       <Box w={"75%"} textAlign={"left"} margin={"auto"}>
-        <Text color={"1A202C"} fontWeight={'semibold'} fontSize={"16px"} mb={"10px"}>POPULAR SEARCHES:</Text>
-        <Text fontSize={"16px"}>New ArrivalsWestern | Clothing  |    TopsDresses |    Skirts |    Bottoms |    DenimJackets & Blazers |    Shrugs |    Curve |    Accessories |    SaleParty |     WearWork  |    WearVacation |     WearCasual |     WearCrop |     TopsMaxi  |    TopsOff |     Shoulder |     TopsCold  |    Shoulder |     TopsRuffled  |    TopsBell |     Sleeve |     TopsFloral  |    TopsMaxi |     DressesSkater |     DressesMini |     DressesOff  |    Shoulder  |    DressesCold |     Shoulder |     DressesFloral |     DressesLBDJumpsuitsPlus |     Size |     DressesPlus |     Size |     TopsWinter |     WearLeggingsJeggingsWomen's |     LoungewearWholesale |     Enquiries</Text>
+        <Text color={"1A202C"} fontWeight={'semibold'} fontSize={isLargerThan500 ? "13px" :"16px"} mb={"10px"}>POPULAR SEARCHES:</Text>
+        <Text fontSize={isLargerThan500 ? "13px" :"16px"}>New ArrivalsWestern | Clothing  |    TopsDresses |    Skirts |    Bottoms |    DenimJackets & Blazers |    Shrugs |    Curve |    Accessories |    SaleParty |     WearWork  |    WearVacation |     WearCasual |     WearCrop |     TopsMaxi  |    TopsOff |     Shoulder |     TopsCold  |    Shoulder |     TopsRuffled  |    TopsBell |     Sleeve |     TopsFloral  |    TopsMaxi |     DressesSkater |     DressesMini |     DressesOff  |    Shoulder  |    DressesCold |     Shoulder |     DressesFloral |     DressesLBDJumpsuitsPlus |     Size |     DressesPlus |     Size |     TopsWinter |     WearLeggingsJeggingsWomen's |     LoungewearWholesale |     Enquiries</Text>
       </Box>
     </Box>
   )

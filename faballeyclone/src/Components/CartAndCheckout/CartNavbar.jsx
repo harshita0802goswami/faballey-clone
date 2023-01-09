@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styles from '../../Pages/Cart/Cart.module.css'
 import { FaShoppingCart, FaCreditCard, FaUserAlt } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 function CartNavbar(props) {
   let NavigateToPage = useNavigate();
@@ -17,12 +17,13 @@ function CartNavbar(props) {
     setUsername(name);
   },[username])
 
+  const navigate = useNavigate();
 
   return (
     <div><div className={styles.CartNavbar}>
     <div className={styles.CartSiteLogo}>
-      <img src="https://www.faballey.com/images/logo.png" alt="img" />
-      <img src="https://www.faballey.com/images/mobile/moblogo.png" alt="" />
+     <img onClick={()=>navigate('/')} style={{cursor:'pointer'}} src="https://www.faballey.com/images/logo.png" alt="img" />
+     <img onClick={()=>navigate('/')} style={{cursor:'pointer'}} src="https://www.faballey.com/images/mobile/moblogo.png" alt="" />
     </div>
     <div className={styles.CartAllIcons}>
       <div onClick={()=>Navigate('/cart')} style={{cursor:"pointer"}} className={props.CartIconStyle ? styles.ActiveIconLowerBorder:styles.InactiveIconColor}>

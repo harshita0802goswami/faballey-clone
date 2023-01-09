@@ -25,14 +25,14 @@
   margin-right: 1em;
   margin-bottom: 10px;
   border: 1px solid grey;
-  padding: 10.5px;
+  padding: 11.4px;
   font-weight: bold;
 }
-.size p:hover{
+/* .size p:hover{
   background-color: black;
   color: white;
-}
-.activeSize:hover {
+} */
+.activeSize{
   background-color: black;
   color: white;
 }
