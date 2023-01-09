@@ -39,24 +39,44 @@ const steps = [
             // When we need to show a number of
             // options to choose we create alist
             // like this
-            { value: 1, label: 'View Products', },
-            { value: 2, label: 'Contect Faballey', },
+            { value: 1, label: 'View Products',trigger: 5 },
+            { value: 2, label: 'Contect Faballey',trigger:7 },
  
-        ],
+        ],   
+    }, {
+        id: '5',
+        message: "You can find Products in ALLSTYLES on navBar",
+        trigger:6
+    },{
+        id: '6',
+        options: [
+             
+            // When we need to show a number of
+            // options to choose we create alist
+            // like this
+            // { value: 1, label: 'View Products',trigger: 5 },
+            { value: 2, label: 'Contect Faballey',trigger:7 },
+ 
+        ],   
+    },
+    {
+        id: '7',
+        message: "mail to : contect@faballey.com",
+        trigger: 4,
         end: true
     }
 ];
  
 // Creating our own theme
 const theme = {
-    background: '#C9FF8F',
-    headerBgColor: '#197B22',
-    headerFontSize: '20px',
-    botBubbleColor: '#0F3789',
-    headerFontColor: 'white',
-    botFontColor: 'white',
-    userBubbleColor: '#FF5733',
-    userFontColor: 'white',
+    background: 'rgb(243, 240, 240)',
+    headerBgColor: 'lightblue',
+    headerFontSize: '22px',
+    botBubbleColor: 'rgb(255,233,229)',
+    headerFontColor: 'black',
+    botFontColor: 'black',
+    userBubbleColor: 'pink',
+    userFontColor: 'black',
 };
  
 // Set some properties of the bot

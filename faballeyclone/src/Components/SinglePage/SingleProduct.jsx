@@ -205,7 +205,7 @@ const SingleProduct = () => {
             {/* add to cart & wishlist */}
             <div className="cartBtns">
               <p className="addToCart" onClick={() => addToCart()}>
-                ADD TO BAG
+                ADD TO CART
               </p>
               <p className="addToWishlist">
                 <span>
