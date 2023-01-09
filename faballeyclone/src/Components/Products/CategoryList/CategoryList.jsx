@@ -59,3 +59,4 @@ export const CategoryList = ({changeFilter}) => {
     </div>
   )
 }
+

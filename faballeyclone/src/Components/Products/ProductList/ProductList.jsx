@@ -14,6 +14,7 @@ import {ChevronDownIcon} from '@chakra-ui/icons'
 import Pagination from '../Pagination/Pagination';
 
 import Select from 'react-select';
+import { CategoryList } from '../CategoryList/CategoryList';
 
 export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalProducts,filters,currentPage,changeByClick,setCurrentPage}) => {
   let renderingData =[0,0,0,0,0,0,0,0,0,0,0,0];
