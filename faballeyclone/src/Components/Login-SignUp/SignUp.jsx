@@ -4,7 +4,7 @@ import {
     Input,
     Divider,
     Button,
-    Text, Box, Flex, Image
+    Text, Box, Flex, Image, useToast
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons"
 import { Icon } from '@chakra-ui/react'
@@ -18,11 +18,11 @@ import { useDispatch } from "react-redux";
 
 import Action from "../../Redux/Action";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function MySignUp() {
 
-
+    
     let storeData = useSelector((storeData) => {
 
         return storeData.signUpDetails
@@ -41,6 +41,8 @@ function MySignUp() {
     })
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const toast = useToast();
 
 
     //close mark div ref
@@ -88,23 +90,46 @@ function MySignUp() {
     const formSubmitHandler = (e) => {  
         e.preventDefault();
         localStorage.setItem("userName",input.name)
-        Action(input, dispatch)
-
+        if(input.password==input.confirmPassword){
+            toast({
+                title: `User Registered Successfully`,
+                status: 'success',
+                duration: 2000,
+                position: 'top',
+                containerStyle: {
+                }
+                
+              })
+              Action(input, dispatch)
+              navigate('/login')
+        }else{
+            toast({
+                title: `Password does not Match`,
+                status: 'error',
+                duration: 2000,
+                position: 'top',
+                containerStyle: {
+                }
+                
+              })
+        }
+        
+        
 
     }
     return (
-        <Box textAlign={"center"} mb={'8%'} mt={'2%'}>
+        <Box textAlign={"center"} mb={'8%'} mt={'6%'}>
             <Box ref={divRef} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} margin={"auto"} >
                 <Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"} onClick={closeDiv} /> <br />
                 <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> REGISTER HERE </Text>
                 <FormControl isRequired >
 
                     <FormLabel ml={"5%"}>Name</FormLabel>
-                    <Input name={"name"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef3} onClick={handleInputClick3} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"} />
+                    <Input name={"name"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef3} onClick={handleInputClick3} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER NAME" mb={"24px"} />
 
 
                     <FormLabel ml={"5%"}>Email</FormLabel>
-                    <Input name={"email"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef1} onClick={handleInputClick1} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADRESS" mb={"24px"} />
+                    <Input name={"email"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef1} onClick={handleInputClick1} w={"90%"} padding={"27px"} type="email" id="email" placeholder="ENTER EMAIL ADDRESS" mb={"24px"} />
                     <FormLabel ml={"5%"}>Enter Password</FormLabel>
                     <Input name={"password"} onChange={handleSignUp} borderRadius={"none"} ref={inputRef2} onClick={handleInputClick2} w={"90%"} padding={"27px"} type="password" id="password" placeholder="ENTER PASSWORD" />
                     <FormLabel ml={"5%"} mt={"24px"} > Confirm Password</FormLabel>
@@ -129,7 +154,7 @@ function MySignUp() {
                 </Box>
 
                 <Box>
-                    <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} ><Link to={'/'}>Already Registered? Login</Link></Text>
+                    <Text mt={"24px"} color={"blue"} textDecoration={"underline"} opecity fontFamily={"Lato"} fontSize={"13px"} opacity={"0.8"} cursor={"pointer"} ><Link to={'/login'}>Already Registered? Login</Link></Text>
                 </Box>
 
 

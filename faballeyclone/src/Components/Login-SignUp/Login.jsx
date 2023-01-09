@@ -4,7 +4,7 @@ import {
   Input,
   Divider,
   Button,
-  Text, Box, Flex, Image
+  Text, Box, Flex, Image, useToast
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons"
 import { Icon } from '@chakra-ui/react'
@@ -21,7 +21,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function MyLogin() {
 
-
+const toast = useToast()
 const navigate  = useNavigate();
   //GOOGLE AUTH
 
@@ -35,6 +35,16 @@ const navigate  = useNavigate();
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    toast({
+      title: `Login Successful`,
+      status: 'success',
+      duration: 2000,
+      position: 'top',
+      containerStyle: {
+      }
+      
+    })
+    
     navigate('/')
     // ...
   }).catch((error) => {
@@ -46,7 +56,15 @@ const navigate  = useNavigate();
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
 
-    alert(errorMessage)
+    toast({
+      title: `Error Occured while Loging In`,
+      status: 'error',
+      duration: 2000,
+      position: 'top',
+      containerStyle: {
+      }
+      
+    })
     
     // ...
   });
@@ -129,7 +147,7 @@ const navigate  = useNavigate();
   };
   return (
     // <Box margin={'auto'}  textAlign={"center"} position="absolute" zIndex={'20'} backdropFilter="blur(5px)" width={'100%'}>
-      <Box textAlign={'center'} ref={divRef} margin={'auto'} mt={'1%'} mb={'8%'} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} >
+      <Box textAlign={'center'} ref={divRef} margin={'auto'} mt={'6%'} mb={'8%'} bg={"white"} minWidth={"500px"} w={"35%"} boxShadow='md' borderRadius={"5px"} padding={"30px"} >
         <Link to={'/'}><Icon w={"12px"} as={CloseIcon} float={"right"} cursor={"pointer"}/></Link> <br />
         <Text ml={"5%"} paddingBottom={"33px"} textAlign={"center"} fontFamily={"Lato"} fontSize={"24px"} fontWeight={"bold"}> LOGIN </Text>
         {/* <Text ml={"5%"} paddingBottom={"19px"} textAlign={"left"} fontFamily={"Lato"} fontSize={"14px"} fontWeight={"bold"}> for a quicker checkout</Text> */}
