@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Text } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, MenuItem, Text } from '@chakra-ui/react'
 
 export const CategoryList = ({changeFilter}) => {
   let arr = [
@@ -31,21 +31,8 @@ export const CategoryList = ({changeFilter}) => {
     
   ]
   return (
-    <div style={{marginTop:'0%',width:'21%'}}>
+    <div style={{marginTop:'0%',width:'17%'}}>
       <Accordion defaultIndex={[1]} allowMultiple>
-      <AccordionItem>
-      <h2>
-        <AccordionButton borderTop={'1.5px solid gray'} >
-          <Box as="span" flex='1' textAlign='left' fontSize={'l'} >
-            Price
-          </Box>
-          <AccordionIcon />
-        </AccordionButton>
-      </h2>
-      <AccordionPanel pb={4} >
-      
-      </AccordionPanel>
-    </AccordionItem>
   {
     arr.map((element)=>{
       return <AccordionItem>

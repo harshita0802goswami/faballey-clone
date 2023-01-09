@@ -1,4 +1,4 @@
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Text, useToast, Wrap, WrapItem } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { CategoryList } from '../../Components/Products/CategoryList/CategoryList'
 import { ProductList } from '../../Components/Products/ProductList/ProductList'
@@ -11,8 +11,6 @@ export const Products = () => {
   const [isLoading, setLoading]=useState(true);
   const [currentPage,setCurrentPage] = useState(1);
   const [totalProducts,setTotalProducts] =useState(0);
-  const [showAlert,setAlert] = useState(false);
-  const [showSuccess,setSuccess] = useState(false);
   const [filters,setFilters] = useState({
     category:'',
     color:'',
@@ -20,6 +18,7 @@ export const Products = () => {
     length:'',
     discount:''
   })
+  const toast = useToast();
   const [sort,setSort] = useState('');
 
   const changeFilter = (key,value)=>{
@@ -33,14 +32,12 @@ export const Products = () => {
     })
   }
 
-console.log(filters);
+// console.log(filters);
 
 const changeSort = (value)=>{
-  console.log(value+" sort value")
   setSort(value);
 }
-console.log(sort);
-
+console.log(sort+" sort value")
 const changePages =(value)=>{
   setCurrentPage(prev=>prev+value);
 }
@@ -50,7 +47,7 @@ const changeByClick=(value)=>{
 }
   const fetchData = async ()=>{
     setLoading(true)
-    let res = await fetch(`https://cheddar-pentagonal-torta.glitch.me/products?_page=${currentPage}&_limit=12${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
+    let res = await fetch(`https://cheddar-pentagonal-torta.glitch.me/products?_page=${currentPage}&_limit=12&${(sort!='')?"_sort=price1&_order="+sort:''}&${(filters.category!="")?"category="+filters.category:""}&${(filters.color!="")?"color="+filters.color:""}&${(filters.sleeves!="")?"sleeves="+filters.sleeves:""}&${(filters.length!="")?"length="+filters.length:""}&${(filters.discount!="")?"discount_lte="+filters.discount:""}&`);
     setTotalProducts(res.headers.get('X-Total-Count'));
     let data = await res.json();
     console.log(data);
@@ -76,12 +73,15 @@ const changeByClick=(value)=>{
     })
     let data = await res.json();
     console.log(data,'posted');
-    setSuccess(true);
-    setTimeout(() => {
+    toast({
+      title: `Successfully Added to Cart`,
+      status: 'success',
+      duration: 2000,
+      position: 'top',
+      containerStyle: {
+      }
       
-      setSuccess(false);
-      
-    }, 2000);
+    })
 
 }
 
@@ -93,19 +93,22 @@ const changeByClick=(value)=>{
     let data = await res.json()
     console.log(data);
     if(data.length>0){
-      setAlert(true);
-
-      setTimeout(() => {
+      toast({
+        title: `Product is Already in Cart`,
+        status: 'error',
+        duration: 2000,
+        position: 'top',
+        containerStyle: {
+          width: '10%',
+          maxWidth: '100%',
+        }
         
-        setAlert(false);
-
-      }, 2000);
+      })
     }
     else{
       postData(propdata);
     }
   }
-  console.log(showAlert);
   useEffect(()=>{
     fetchData();
   },[filters,sort,currentPage])
@@ -114,7 +117,7 @@ const changeByClick=(value)=>{
         <CategoryList changeFilter={changeFilter}/>
         <ProductList products={products} addToCart = {addToCart} isLoading={isLoading} changeSort={changeSort} sort={sort} totalProducts={totalProducts} filters={filters} currentPage={currentPage} changeByClick = {changeByClick} setCurrentPage={changePages}/>
         
-        {showSuccess?
+        {/* {showSuccess?
             <Container  fontSize="1rem" gap="3px" h={'45px'} width="fit-content" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="5%" left="45%"  borderRadius="8px">
             <AiFillCheckCircle fontSize={"1.2rem"}/> <Text>
                 
@@ -123,12 +126,13 @@ const changeByClick=(value)=>{
         </Container>:""}
 
         {showAlert?
-            <Container  fontSize="1rem" gap="3px" h={'45px'} width="fit-content" backgroundColor="red" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="5%" left="45%"  borderRadius="8px">
+            <Container zIndex={'50'}  fontSize="1rem" gap="3px" h={'45px'} width="fit-content" backgroundColor="red" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="5%" left="45%"  borderRadius="8px">
             <MdError fontSize={"1.2rem"}/> <Text>
                 
                 Already in Cart!
                 </Text>
-            </Container>:""}
+            </Container>:""} */}
+            
     </Box>
   )
 }

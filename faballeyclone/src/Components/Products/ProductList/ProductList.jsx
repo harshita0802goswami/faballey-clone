@@ -13,9 +13,11 @@ import {
 import {ChevronDownIcon} from '@chakra-ui/icons'
 import Pagination from '../Pagination/Pagination';
 
+import Select from 'react-select';
+
 export const ProductList = ({products,addToCart,isLoading,changeSort,sort,totalProducts,filters,currentPage,changeByClick,setCurrentPage}) => {
   let renderingData =[0,0,0,0,0,0,0,0,0,0,0,0];
-  return (<div style={{width:"79%",padding:"0px 20px"}}>
+  return (<div style={{width:"83%",padding:"0px 20px"}}>
     <Box  className='productListTitle' h={'30px'}  paddingTop={'4px'} paddingBottom={'25px'} display="flex" justifyContent={'space-between'} borderTop='1px solid gray' borderBottom={'1px solid gray'} mb='20px'>
     <Box display="flex" alignItems={'center'}  height={'20px'}>
       <Box paddingRight={'10px'} borderRight={'1px solid gray'} ><h6>{filters.category!=""?filters.category.toUpperCase():'ALL'}</h6></Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import MidbarList from "./MidbarList";
 import { GrLinkTop } from "react-icons/gr";
@@ -12,8 +12,10 @@ import {
   MenuItem,
   Button,
 } from "@chakra-ui/react";
+import Search from "./Search";
 
 const Midbar = ({ filters, changeFilters }) => {
+  const [searchToggle,setSearchToggle] = useState(false);
   return (
     <div className="midBar">
       <div>
@@ -45,7 +47,10 @@ const Midbar = ({ filters, changeFilters }) => {
         <MidbarList filters={filters} changeFilters={changeFilters} />
       </div>
       <div style={{ display: "flex" }}>
-        <p><BiSearchAlt size={'1.6rem'}/></p>
+        {searchToggle?<div style={{position:'relative'}}>
+          <Search setSearchToggle={setSearchToggle}/>
+        </div>:''}
+        <BiSearchAlt cursor={'pointer'} onClick={()=>setSearchToggle((prev)=>!prev)} size={'1.6rem'}/>
         <select
           name=""
           id="corancy"
