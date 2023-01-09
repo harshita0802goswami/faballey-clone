@@ -100,10 +100,10 @@ function ColorString(){
             </div>
             <div className={styles.UpperRightProductDetailsDiv}>
               <p className={styles.ProductPriceInCart}>
-                Rs. {Cartdata.price1 * quantity}
+              ₹ {Cartdata.price1 * quantity}
               </p>
               &nbsp;
-              <p className={styles.ProductStrikedPriceInCart}>{Cartdata.price2}</p>
+              <p className={styles.ProductStrikedPriceInCart}>₹ {Cartdata.price2}</p>
             </div>
           </div>
           <div className={styles.LowerProductDetailsDiv}>
@@ -124,7 +124,7 @@ function ColorString(){
                   <SlMinus />
                 </button>
               </div>
-              <p>Add to wishlish</p>
+              <p>Add to wishlist</p>
             </div>
             <div className={styles.DeleteCartItem}>
               <MdDelete
