@@ -10,6 +10,7 @@ import {
   AlertIcon,
   Container,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { Input, InputGroup, Button, InputRightElement } from "@chakra-ui/react";
 import "./SingleProduct.css";
@@ -33,15 +34,10 @@ const SingleProduct = () => {
 
   const [product, setproduct] = useState({});
   console.log("product: ", product);
-
   const [prodSize, setProdSize] = useState([]);
   const [checkActiveState, setCheckActiveState] = useState(productSizes);
-
   const [showMessage, setMessage] = useState(false);
   const [show, setShow] = useState(false);
-
-  const [alert,setAlert] = useState(false);
-  const [success,setSuccess] = useState(false);
 
   const {id} = useParams();
   const handleClick = () => {
@@ -49,6 +45,7 @@ const SingleProduct = () => {
     setMessage(!showMessage);
   };
 
+  const toast = useToast()
   const getProduct = async () => {
     const res = await fetch(
       `https://cheddar-pentagonal-torta.glitch.me/products/${id}`
@@ -70,13 +67,17 @@ const SingleProduct = () => {
     let data = await res.json()
     console.log(data);
     if(data.length>0){
-      setAlert(true);
-
-      setTimeout(() => {
+      toast({
+        title: `Product is Already in Cart`,
+        status: 'error',
+        duration: 2000,
+        position: 'top',
+        containerStyle: {
+          width: '10%',
+          maxWidth: '100%',
+        }
         
-        setAlert(false);
-
-      }, 2000);
+      })
     }
     else{
       postData(product);
@@ -96,12 +97,15 @@ const SingleProduct = () => {
     })
     let data = await res.json();
     console.log(data,'posted');
-    setSuccess(true);
-    setTimeout(() => {
+    toast({
+      title: `Successfully Added to Cart`,
+      status: 'success',
+      duration: 2000,
+      position: 'top',
+      containerStyle: {
+      }
       
-      setSuccess(false);
-      
-    }, 2000);
+    })
 
 }
   return (
@@ -354,7 +358,7 @@ const SingleProduct = () => {
             </Accordion>
           </div>
         </div>
-        {success?
+        {/* {success?
             <Container  fontSize="1rem" gap="3px" h={'50px'} width="250px" backgroundColor="green" color="white" display="flex" justifyContent ="center" alignItems="center" position="fixed" top="6%" left="45%"  borderRadius="8px">
             <AiFillCheckCircle fontSize={"1.2rem"}/> <Text>
                 
@@ -368,7 +372,7 @@ const SingleProduct = () => {
                 
                 Already in Cart!
                 </Text>
-            </Container>:""}
+            </Container>:""} */}
       </div>
   );
 };

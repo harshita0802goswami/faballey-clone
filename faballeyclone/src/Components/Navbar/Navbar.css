@@ -29,11 +29,16 @@
 .midBar{
     width: 100%;
     box-sizing: border-box;
-    margin-top: 35px;
+    position: fixed;
+    top: 33px;
+    
+    /* border: 1px solid red; */
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 15px 15px 10px;
     align-items: baseline;
+    z-index: 20;
 }
 
 
@@ -98,7 +103,32 @@
     width: 330px;
     max-height: 350px;
 }
-
+.search{
+    position: absolute;
+    width: 400px;
+    right: 6px;
+    z-index: 10;
+    /* background-color: rgb(243, 240, 240); */
+    top: -7px;
+}
+.search ul{
+    margin-top: 10px;
+    padding: 10px 0;
+    background-color: #fff;
+    list-style-type: none;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgb(216, 216, 216);
+}
+.search ul > li{
+    padding: 8px 20px; 
+}
+.search ul > li:hover{
+    background-color: rgb(243, 240, 240);
+    box-shadow: 0 0 2px rgb(196, 195, 195);
+}
+/* .search input:focus{
+    
+} */
 .navList > li:hover .midBarCard{
     visibility: visible;
 }

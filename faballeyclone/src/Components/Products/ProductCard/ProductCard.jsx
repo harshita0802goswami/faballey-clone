@@ -51,9 +51,11 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
       </div>
       <Box padding={"10px"}>
         <Box marginBottom={'12px'}>
-          <Text fontSize="sm" overflow={'hidden'}>
+          <Box overflow={'hidden'} h={'20px'}>
+          <Text fontSize="sm" >
             {data.title}
           </Text>
+          </Box>
           <h3 className="price">
             <span className="currentPrice">₹ {data.price1}</span>&nbsp;{" "}
             <span className="originalPrice">₹ {data.price2}</span>
