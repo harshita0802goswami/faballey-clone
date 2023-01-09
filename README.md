@@ -3,9 +3,9 @@
 ## Features
 
 - ChatBox
-- Google Authentication
 - Fully Responsive
 - Search Functionality
+- Google Authentication
 - Fully functional 5 pages - Landing page , Login/SignUp, Product Page, Product Description Page, Cart and CheckoutPage
 
 ## 🛠 Tech Stacks
