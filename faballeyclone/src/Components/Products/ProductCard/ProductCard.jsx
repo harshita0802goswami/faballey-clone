@@ -102,7 +102,7 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
             fontSize={'0.8rem'}
             fontWeight={'500'}
           >
-            ADD TO BAG
+            ADD TO CART
           </Button>
         </Box>
       </Box>

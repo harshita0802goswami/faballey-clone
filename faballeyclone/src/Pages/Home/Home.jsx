@@ -6,8 +6,60 @@ import ImageSet from "../../Components/Landing/ImageSet";
 import CalltoAction from "../../Components/Landing/CalltoAction";
 import ProductCarousel from "../../Components/Landing/ProductCarousel";
 import InstaShop from "../../Components/Landing/InstaShop";
+import { useState } from "react";
+import Scroll2Top from "../../Components/Scroll2Top/Scroll2Top";
+import Chatbot from "../../Components/ChatBot/Chatbot";
 
 const Home = ()=>{
+    const [visible, setVisible] = useState(false)
+
+    const toggleVisible = () => {
+        const scrolled = document.documentElement.scrollTop;
+        if (scrolled > 300){
+          setVisible(true)
+        } 
+        else if (scrolled <= 300){
+          setVisible(false)
+        }
+      };
+
+      window.addEventListener('scroll', toggleVisible);
+
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
+
     return (
         <div style={{zIndex:'1',marginBottom:'3%'}}>
             
@@ -57,6 +109,8 @@ const Home = ()=>{
                     'https://img.faballey.com/images/banner/09985e07-ed9e-4fe9-9d3c-fcba8ac200a6.jpg'
                 ]}
             > <p className='titlePara'>Invest in trends you'll wear on repeat</p> </ImageSet>
+            {visible?<Scroll2Top/>:""}
+            <Chatbot/>
         </div>
     )
 }

@@ -36,6 +36,7 @@ const SingleProduct = () => {
   console.log("product: ", product);
   const [prodSize, setProdSize] = useState([]);
   const [checkActiveState, setCheckActiveState] = useState(productSizes);
+  const [sizeSelected,setSizeSelected] = useState(false);
   const [showMessage, setMessage] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -58,6 +59,7 @@ const SingleProduct = () => {
   }, []);
 
   const setProductSizeHandleClick = (e, id) => {
+    setSizeSelected(true)
     setProdSize(e);
     setCheckActiveState({ ...productSizes, activeClass: id });
   };
@@ -66,7 +68,17 @@ const SingleProduct = () => {
     let res=await fetch(`https://cheddar-pentagonal-torta.glitch.me/cart?uniqueId=${product.uniqueId}`)
     let data = await res.json()
     console.log(data);
-    if(data.length>0){
+    if(!sizeSelected){
+      toast({
+        title: `Please Select Size`,
+        status: 'error',
+        duration: 2000,
+        position: 'top',
+        containerStyle: {
+        }
+      })
+    }
+    else if(data.length>0){
       toast({
         title: `Product is Already in Cart`,
         status: 'error',
@@ -210,7 +222,7 @@ const SingleProduct = () => {
             <InputGroup size="md">
               <Input pr="4.5rem" type="number" placeholder="Enter Pincode" width= "29rem" />
               <InputRightElement width="6.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                <Button h="1.75rem" marginRight={'30px'} size="sm" onClick={handleClick}>
                   {show ? "Edit" : "Check"}
                 </Button>
               </InputRightElement>
