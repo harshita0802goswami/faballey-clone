@@ -1,8 +1,6 @@
 const inialData =  {
     signUpDetails : [{
-
-
-
+        name:''
     }]
 }
 

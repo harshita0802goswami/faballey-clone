@@ -10,7 +10,7 @@ const Scroll2Top = () => {
           
         });
       };
-  return <Box onClick={scrollToTop} cursor={"pointer"} bgColor={"rgb(248,201,200)"} color='black' display={"flex"} alignItems="center" justifyContent="center" height="60px" width="60px" borderRadius="50%"  position={"fixed"} bottom="8%" right="4%">
+  return <Box onClick={scrollToTop} cursor={"pointer"} bgColor={"rgb(248,201,200)"} color='black' display={"flex"} alignItems="center" justifyContent="center" height="55px" width="55px" borderRadius="50%"  position={"fixed"} bottom="14%" right="2.5%">
     <AiOutlineArrowUp fontSize={"1.8rem"}/>
   </Box>
 }

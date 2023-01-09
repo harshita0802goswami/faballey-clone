@@ -53,9 +53,10 @@ const changeByClick=(value)=>{
     console.log(data);
     // setTotalProducts(data.length);
     setProducts(data);
+    // setLoading(false);
       setInterval(()=>{
         setLoading(false);
-      },4000)
+      },1500)
   }
 
   console.log(totalProducts+"total poducts");

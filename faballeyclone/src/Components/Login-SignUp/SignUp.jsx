@@ -89,7 +89,7 @@ function MySignUp() {
     //handle submit 
     const formSubmitHandler = (e) => {  
         e.preventDefault();
-        localStorage.setItem("userName",input.name)
+        localStorage.setItem("login",false)
         if(input.password==input.confirmPassword){
             toast({
                 title: `User Registered Successfully`,

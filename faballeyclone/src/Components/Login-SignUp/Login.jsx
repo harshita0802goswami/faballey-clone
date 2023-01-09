@@ -35,6 +35,9 @@ const navigate  = useNavigate();
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    // localStorage.setItem('user',user);
+    localStorage.setItem('login',true);
+    
     toast({
       title: `Login Successful`,
       status: 'success',
@@ -108,6 +111,7 @@ const navigate  = useNavigate();
 
         if (elem.email === loginData.email && elem.password === loginData.password) {
           // alert("LOGIN SUCCESSFUL");
+          localStorage.setItem('login',true);
          <Navigate to={'/'}/>
           // console.log(localStorage.getItem("userName"));
           isFind = false;

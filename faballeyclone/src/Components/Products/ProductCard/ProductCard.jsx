@@ -42,7 +42,7 @@ export const ProductCard = ({ data,addToCart,isLoading}) => {
         </Box>
       </Box>
     </Box>:
-    <Box border={"1px solid gray"}>
+    <Box border={"1px solid #e5e5e5"}>
       <div onMouseEnter={()=>changeImage(true)} onMouseLeave={()=>changeImage(false)}>
       <div position='relative' zIndex={'100'}>
       <Box textAlign={'center'}  fontSize='12px'  display={'flex'} justifyContent='center' alignItems={'center'}   color={'white'} backgroundColor={'rgb(50,50,50)'} marginTop={'5px'} marginLeft={'5px'} width={'45px'} h={'45px'} borderRadius={'50%'} position={'absolute'} fontWeight='500'>{data.discount}% OFF</Box>

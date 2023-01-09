@@ -21,7 +21,7 @@ function OrderConfirmation() {
             <p>Order ID:- fab-1625871004 </p>
         </div>
         <div id='infoOrderConfirmation'>
-            <p>Redirecting you to Home Page </p><div id='dot'>{dot}</div>
+            <p>Redirecting you to Cart Page </p><div id='dot'>{dot}</div>
         </div>
     </div>
   )

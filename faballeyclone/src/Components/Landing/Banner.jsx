@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Landing.css'
 import {GrFormNext,GrFormPrevious} from 'react-icons/gr'
 
@@ -8,7 +8,9 @@ const Banner = () => {
      
     const handlePrev= ()=>{
         let box = document.querySelector('.carousel-images');
+        // let boxWidth = box.clientWidth;
         let boxWidth = box.clientWidth;
+        console.log(boxWidth,'box width');
         box.scrollLeft -= boxWidth;
         // box.scrollWidth
     }
@@ -23,9 +25,11 @@ const Banner = () => {
         }
     }
 
-    setInterval(()=>{   
-        handleNext();
-    }, 4000)
+    useEffect(()=>{
+        setInterval(()=>{   
+            handleNext();
+        }, 4000)
+    },[])
 
   return (
     <div className='Banner-carousel'>
