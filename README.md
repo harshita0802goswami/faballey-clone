@@ -2,7 +2,7 @@
 
 ## Features
 
-- ChatBox
+- ChatBot
 - Fully Responsive
 - Search Functionality
 - Google Authentication
