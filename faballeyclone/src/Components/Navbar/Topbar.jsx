@@ -39,8 +39,8 @@ const Topbar = () => {
         </div>
         <div >
             <ul style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
-                <li>Track Order</li>
-                <li>Store Locator</li>
+                <li className='hide-on-small'>Track Order</li>
+                <li className='hide-on-small'>Store Locator</li>
                 {(name.length!='')?<li onClick={changeLocal}>Logout</li>:<li><Link  to={'/login'}>Login</Link></li>}
                 {(name.length!='')?<li>{name}</li>:<li><Link to={'/signup'}>Sign up</Link></li>}
                 <li><Link to={'/cart'}><BsHandbag/></Link></li>
