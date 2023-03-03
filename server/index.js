@@ -11,6 +11,9 @@ const userRouter = require('./routes/Userroutes')
 
 const app = express();
 
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use(cors());
 
 
@@ -22,9 +25,8 @@ app.get('/',(req,res)=>{
 
 app.use('/api/user',userRouter)
 
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }))
 
-const PORT = process.env.PORT
+
+const PORT = process.env.PORT || 8000 
 Connection();
 app.listen(PORT, () => console.log(`Your server is running successfully on PORT ${PORT}`));
